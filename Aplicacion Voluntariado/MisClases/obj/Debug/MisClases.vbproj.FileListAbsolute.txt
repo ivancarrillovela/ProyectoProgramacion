@@ -1,0 +1,40 @@
+C:\Users\pezon\Desktop\DAM\PROGRAMACIÓN\MisClases\bin\Debug\MisClases.dll
+C:\Users\pezon\Desktop\DAM\PROGRAMACIÓN\MisClases\bin\Debug\MisClases.pdb
+C:\Users\pezon\Desktop\DAM\PROGRAMACIÓN\MisClases\bin\Debug\MisClases.xml
+C:\Users\pezon\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.vbproj.AssemblyReference.cache
+C:\Users\pezon\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.Resources.resources
+C:\Users\pezon\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.vbproj.GenerateResource.cache
+C:\Users\pezon\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.vbproj.CoreCompileInputs.cache
+C:\Users\pezon\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.dll
+C:\Users\pezon\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.xml
+C:\Users\pezon\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.pdb
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\MisClases\bin\Debug\MisClases.dll
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\MisClases\bin\Debug\MisClases.pdb
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\MisClases\bin\Debug\MisClases.xml
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.vbproj.AssemblyReference.cache
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.Resources.resources
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.vbproj.GenerateResource.cache
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.vbproj.CoreCompileInputs.cache
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.dll
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.xml
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\MisClases\obj\Debug\MisClases.pdb
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\Ejercicios\EV3\PROYECTO\AplicacionVoluntariado\Aplicacion Voluntariado\MisClases\bin\Debug\MisClases.dll
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\Ejercicios\EV3\PROYECTO\AplicacionVoluntariado\Aplicacion Voluntariado\MisClases\bin\Debug\MisClases.pdb
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\Ejercicios\EV3\PROYECTO\AplicacionVoluntariado\Aplicacion Voluntariado\MisClases\bin\Debug\MisClases.xml
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\Ejercicios\EV3\PROYECTO\AplicacionVoluntariado\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.vbproj.AssemblyReference.cache
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\Ejercicios\EV3\PROYECTO\AplicacionVoluntariado\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.Resources.resources
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\Ejercicios\EV3\PROYECTO\AplicacionVoluntariado\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.vbproj.GenerateResource.cache
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\Ejercicios\EV3\PROYECTO\AplicacionVoluntariado\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.vbproj.CoreCompileInputs.cache
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\Ejercicios\EV3\PROYECTO\AplicacionVoluntariado\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.dll
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\Ejercicios\EV3\PROYECTO\AplicacionVoluntariado\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.xml
+C:\Users\ivancarrillo\Desktop\DAM\PROGRAMACIÓN\Ejercicios\EV3\PROYECTO\AplicacionVoluntariado\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.pdb
+C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\MisClases\bin\Debug\MisClases.dll
+C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\MisClases\bin\Debug\MisClases.pdb
+C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\MisClases\bin\Debug\MisClases.xml
+C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.vbproj.AssemblyReference.cache
+C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.Resources.resources
+C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.vbproj.GenerateResource.cache
+C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.vbproj.CoreCompileInputs.cache
+C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.dll
+C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.xml
+C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\MisClases\obj\Debug\MisClases.pdb
