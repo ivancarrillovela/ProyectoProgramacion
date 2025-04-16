@@ -45,6 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -67,6 +68,7 @@
     <Compile Include="Actividad.vb" />
     <Compile Include="Ciclo.vb" />
     <Compile Include="GestionActividades.vb" />
+    <Compile Include="StringVerificaciones.vb" />
     <Compile Include="TipoActividad.vb" />
     <Compile Include="Ods.vb" />
     <Compile Include="Organizacion.vb" />

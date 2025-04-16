@@ -39,9 +39,9 @@ Partial Class FormPrincipal
         Me.lblActividades.BackColor = System.Drawing.Color.Transparent
         Me.lblActividades.Font = New System.Drawing.Font("Arial Black", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblActividades.ForeColor = System.Drawing.Color.Navy
-        Me.lblActividades.Location = New System.Drawing.Point(466, 34)
+        Me.lblActividades.Location = New System.Drawing.Point(414, 27)
         Me.lblActividades.Name = "lblActividades"
-        Me.lblActividades.Size = New System.Drawing.Size(594, 42)
+        Me.lblActividades.Size = New System.Drawing.Size(492, 36)
         Me.lblActividades.TabIndex = 0
         Me.lblActividades.Text = "ACTIVIDADES DEL VOLUNTARIADO"
         '
@@ -51,10 +51,9 @@ Partial Class FormPrincipal
         Me.btnNuevaActividad.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.btnNuevaActividad.Font = New System.Drawing.Font("Myanmar Text", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNuevaActividad.ForeColor = System.Drawing.Color.White
-        Me.btnNuevaActividad.Location = New System.Drawing.Point(1404, 106)
-        Me.btnNuevaActividad.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnNuevaActividad.Location = New System.Drawing.Point(1248, 85)
         Me.btnNuevaActividad.Name = "btnNuevaActividad"
-        Me.btnNuevaActividad.Size = New System.Drawing.Size(222, 78)
+        Me.btnNuevaActividad.Size = New System.Drawing.Size(197, 62)
         Me.btnNuevaActividad.TabIndex = 1
         Me.btnNuevaActividad.Text = "NUEVA ACTIVIDAD"
         Me.btnNuevaActividad.UseVisualStyleBackColor = False
@@ -65,10 +64,9 @@ Partial Class FormPrincipal
         Me.btnGestionarActividad.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.btnGestionarActividad.Font = New System.Drawing.Font("Myanmar Text", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnGestionarActividad.ForeColor = System.Drawing.Color.White
-        Me.btnGestionarActividad.Location = New System.Drawing.Point(1404, 378)
-        Me.btnGestionarActividad.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnGestionarActividad.Location = New System.Drawing.Point(1248, 302)
         Me.btnGestionarActividad.Name = "btnGestionarActividad"
-        Me.btnGestionarActividad.Size = New System.Drawing.Size(222, 78)
+        Me.btnGestionarActividad.Size = New System.Drawing.Size(197, 62)
         Me.btnGestionarActividad.TabIndex = 3
         Me.btnGestionarActividad.Text = "GESTIONAR ACTIVIDAD"
         Me.btnGestionarActividad.UseVisualStyleBackColor = False
@@ -79,10 +77,9 @@ Partial Class FormPrincipal
         Me.btnArchivarActividad.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.btnArchivarActividad.Font = New System.Drawing.Font("Myanmar Text", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnArchivarActividad.ForeColor = System.Drawing.Color.White
-        Me.btnArchivarActividad.Location = New System.Drawing.Point(1404, 278)
-        Me.btnArchivarActividad.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnArchivarActividad.Location = New System.Drawing.Point(1248, 222)
         Me.btnArchivarActividad.Name = "btnArchivarActividad"
-        Me.btnArchivarActividad.Size = New System.Drawing.Size(222, 78)
+        Me.btnArchivarActividad.Size = New System.Drawing.Size(197, 62)
         Me.btnArchivarActividad.TabIndex = 2
         Me.btnArchivarActividad.Text = "ARCHIVAR ACTIVIDAD" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.btnArchivarActividad.UseVisualStyleBackColor = False
@@ -93,10 +90,9 @@ Partial Class FormPrincipal
         Me.btnMasInformacion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.btnMasInformacion.Font = New System.Drawing.Font("Myanmar Text", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnMasInformacion.ForeColor = System.Drawing.Color.White
-        Me.btnMasInformacion.Location = New System.Drawing.Point(1404, 540)
-        Me.btnMasInformacion.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnMasInformacion.Location = New System.Drawing.Point(1248, 432)
         Me.btnMasInformacion.Name = "btnMasInformacion"
-        Me.btnMasInformacion.Size = New System.Drawing.Size(222, 63)
+        Me.btnMasInformacion.Size = New System.Drawing.Size(197, 50)
         Me.btnMasInformacion.TabIndex = 4
         Me.btnMasInformacion.Text = "MÁS INFORMACIÓN"
         Me.btnMasInformacion.UseVisualStyleBackColor = False
@@ -107,10 +103,9 @@ Partial Class FormPrincipal
         Me.btnSalirMenuActividades.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.btnSalirMenuActividades.Font = New System.Drawing.Font("Myanmar Text", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSalirMenuActividades.ForeColor = System.Drawing.Color.White
-        Me.btnSalirMenuActividades.Location = New System.Drawing.Point(1404, 622)
-        Me.btnSalirMenuActividades.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnSalirMenuActividades.Location = New System.Drawing.Point(1248, 498)
         Me.btnSalirMenuActividades.Name = "btnSalirMenuActividades"
-        Me.btnSalirMenuActividades.Size = New System.Drawing.Size(222, 49)
+        Me.btnSalirMenuActividades.Size = New System.Drawing.Size(197, 39)
         Me.btnSalirMenuActividades.TabIndex = 5
         Me.btnSalirMenuActividades.Text = "SALIR"
         Me.btnSalirMenuActividades.UseVisualStyleBackColor = False
@@ -118,19 +113,20 @@ Partial Class FormPrincipal
         'dvgMenuActividades
         '
         Me.dvgMenuActividades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dvgMenuActividades.Location = New System.Drawing.Point(67, 109)
+        Me.dvgMenuActividades.Location = New System.Drawing.Point(60, 87)
+        Me.dvgMenuActividades.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dvgMenuActividades.Name = "dvgMenuActividades"
         Me.dvgMenuActividades.RowHeadersWidth = 62
         Me.dvgMenuActividades.RowTemplate.Height = 28
-        Me.dvgMenuActividades.Size = New System.Drawing.Size(1298, 562)
+        Me.dvgMenuActividades.Size = New System.Drawing.Size(1154, 450)
         Me.dvgMenuActividades.TabIndex = 6
         '
         'FormPrincipal
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1682, 731)
+        Me.ClientSize = New System.Drawing.Size(1495, 585)
         Me.Controls.Add(Me.dvgMenuActividades)
         Me.Controls.Add(Me.btnSalirMenuActividades)
         Me.Controls.Add(Me.btnMasInformacion)
@@ -139,7 +135,6 @@ Partial Class FormPrincipal
         Me.Controls.Add(Me.btnNuevaActividad)
         Me.Controls.Add(Me.lblActividades)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "FormPrincipal"
         Me.Text = "Aplicacion Voluntariado"
         CType(Me.dvgMenuActividades, System.ComponentModel.ISupportInitialize).EndInit()

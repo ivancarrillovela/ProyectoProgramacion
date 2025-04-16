@@ -1,9 +1,13 @@
 ﻿Imports System.Collections.Specialized.BitVector32
 Imports Biblioteca_de_clases
+Imports System.Configuration
+
 
 Public Class FormPrincipal
 
     Private Sub FormPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        GestionActividades.EliminarActividadesArchivadas()
 
         For Each actividad As Actividad In GestionActividades.ListaActividades
             If actividad.Fecha_fin < Today.Date Then

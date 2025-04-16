@@ -1,6 +1,6 @@
 ﻿Imports System.Collections.Specialized.BitVector32
 Imports Biblioteca_de_clases
-Imports MisClases
+Imports StringVerificaciones
 
 Public Class FormNuevaActividad
     Private Sub FormNuevaActividad_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -17,7 +17,7 @@ Public Class FormNuevaActividad
             Exit Sub
         End If
 
-        If Not MiString.EsAlfabetico(txtNombreNA.Text) Then
+        If Not StringVerificaciones.EsAlfabetico(txtNombreNA.Text) Then
             MessageBox.Show("El campo nombre no es válido. Introduce uno con caracteres alfabéticos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If

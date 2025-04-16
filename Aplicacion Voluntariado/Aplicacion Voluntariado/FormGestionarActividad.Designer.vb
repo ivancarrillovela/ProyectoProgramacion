@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class FormGestionarActividad
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,13 +20,14 @@ Partial Class FormGestionarActividad
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormGestionarActividad))
-        Me.btnEliminarActividad = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.dgvODS = New System.Windows.Forms.DataGridView()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.dgvVoluntarios = New System.Windows.Forms.DataGridView()
+        Me.btnGuardarCambios = New System.Windows.Forms.Button()
         Me.gpxActividad = New System.Windows.Forms.GroupBox()
         Me.cbxOrganizacion = New System.Windows.Forms.ComboBox()
         Me.cbxEstado = New System.Windows.Forms.ComboBox()
@@ -44,60 +45,71 @@ Partial Class FormGestionarActividad
         Me.tbxDireccion = New System.Windows.Forms.TextBox()
         Me.tbxNombre = New System.Windows.Forms.TextBox()
         Me.tbxCdActividad = New System.Windows.Forms.TextBox()
-        Me.btnGuardarCambios = New System.Windows.Forms.Button()
-        Me.dgvVoluntarios = New System.Windows.Forms.DataGridView()
-        Me.dgvODS = New System.Windows.Forms.DataGridView()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.gpxActividad.SuspendLayout()
-        CType(Me.dgvVoluntarios, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnEliminarActividad = New System.Windows.Forms.Button()
+        Me.btnVolver = New System.Windows.Forms.Button()
         CType(Me.dgvODS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvVoluntarios, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gpxActividad.SuspendLayout()
         Me.SuspendLayout()
         '
-        'btnEliminarActividad
+        'dgvODS
         '
-        Me.btnEliminarActividad.BackColor = System.Drawing.Color.Red
-        Me.btnEliminarActividad.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEliminarActividad.ForeColor = System.Drawing.Color.White
-        Me.btnEliminarActividad.Location = New System.Drawing.Point(626, 441)
-        Me.btnEliminarActividad.Name = "btnEliminarActividad"
-        Me.btnEliminarActividad.Size = New System.Drawing.Size(150, 56)
-        Me.btnEliminarActividad.TabIndex = 6
-        Me.btnEliminarActividad.Text = "Eliminar Actividad"
-        Me.btnEliminarActividad.UseVisualStyleBackColor = False
+        Me.dgvODS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvODS.Location = New System.Drawing.Point(410, 217)
+        Me.dgvODS.Name = "dgvODS"
+        Me.dgvODS.RowHeadersWidth = 51
+        Me.dgvODS.RowTemplate.Height = 24
+        Me.dgvODS.Size = New System.Drawing.Size(366, 123)
+        Me.dgvODS.TabIndex = 34
         '
-        'Button4
+        'Button1
         '
-        Me.Button4.BackColor = System.Drawing.Color.Navy
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.Color.White
-        Me.Button4.Location = New System.Drawing.Point(200, 353)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(173, 53)
-        Me.Button4.TabIndex = 11
-        Me.Button4.Text = "Añadir Voluntario"
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.Button1.BackColor = System.Drawing.Color.Red
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Location = New System.Drawing.Point(410, 346)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(184, 53)
+        Me.Button1.TabIndex = 33
+        Me.Button1.Text = "Eliminar ODS"
+        Me.Button1.UseVisualStyleBackColor = False
         '
-        'Button5
+        'Button3
         '
-        Me.Button5.BackColor = System.Drawing.Color.Red
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.ForeColor = System.Drawing.Color.White
-        Me.Button5.Location = New System.Drawing.Point(12, 353)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(182, 53)
-        Me.Button5.TabIndex = 12
-        Me.Button5.Text = "Eliminar Voluntario"
-        Me.Button5.UseVisualStyleBackColor = False
+        Me.Button3.BackColor = System.Drawing.Color.Navy
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.ForeColor = System.Drawing.Color.White
+        Me.Button3.Location = New System.Drawing.Point(600, 346)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(177, 53)
+        Me.Button3.TabIndex = 32
+        Me.Button3.Text = "Añadir ODS"
+        Me.Button3.UseVisualStyleBackColor = False
         '
-        'Label2
+        'dgvVoluntarios
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(26, 19)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(168, 16)
-        Me.Label2.TabIndex = 18
-        Me.Label2.Text = "Informacion de la Actividad"
+        Me.dgvVoluntarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvVoluntarios.Location = New System.Drawing.Point(12, 217)
+        Me.dgvVoluntarios.Name = "dgvVoluntarios"
+        Me.dgvVoluntarios.RowHeadersWidth = 51
+        Me.dgvVoluntarios.RowTemplate.Height = 24
+        Me.dgvVoluntarios.Size = New System.Drawing.Size(361, 123)
+        Me.dgvVoluntarios.TabIndex = 31
+        '
+        'btnGuardarCambios
+        '
+        Me.btnGuardarCambios.BackColor = System.Drawing.Color.Navy
+        Me.btnGuardarCambios.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGuardarCambios.ForeColor = System.Drawing.Color.White
+        Me.btnGuardarCambios.Location = New System.Drawing.Point(470, 434)
+        Me.btnGuardarCambios.Name = "btnGuardarCambios"
+        Me.btnGuardarCambios.Size = New System.Drawing.Size(150, 56)
+        Me.btnGuardarCambios.TabIndex = 30
+        Me.btnGuardarCambios.Text = "Guardar Cambios"
+        Me.btnGuardarCambios.UseVisualStyleBackColor = False
         '
         'gpxActividad
         '
@@ -118,10 +130,10 @@ Partial Class FormGestionarActividad
         Me.gpxActividad.Controls.Add(Me.tbxNombre)
         Me.gpxActividad.Controls.Add(Me.tbxCdActividad)
         Me.gpxActividad.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gpxActividad.Location = New System.Drawing.Point(12, 50)
+        Me.gpxActividad.Location = New System.Drawing.Point(12, 43)
         Me.gpxActividad.Name = "gpxActividad"
         Me.gpxActividad.Size = New System.Drawing.Size(764, 150)
-        Me.gpxActividad.TabIndex = 19
+        Me.gpxActividad.TabIndex = 29
         Me.gpxActividad.TabStop = False
         '
         'cbxOrganizacion
@@ -255,67 +267,69 @@ Partial Class FormGestionarActividad
         Me.tbxCdActividad.Size = New System.Drawing.Size(88, 22)
         Me.tbxCdActividad.TabIndex = 0
         '
-        'btnGuardarCambios
+        'Label2
         '
-        Me.btnGuardarCambios.BackColor = System.Drawing.Color.Navy
-        Me.btnGuardarCambios.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardarCambios.ForeColor = System.Drawing.Color.White
-        Me.btnGuardarCambios.Location = New System.Drawing.Point(470, 441)
-        Me.btnGuardarCambios.Name = "btnGuardarCambios"
-        Me.btnGuardarCambios.Size = New System.Drawing.Size(150, 56)
-        Me.btnGuardarCambios.TabIndex = 20
-        Me.btnGuardarCambios.Text = "Guardar Cambios"
-        Me.btnGuardarCambios.UseVisualStyleBackColor = False
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(26, 12)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(168, 16)
+        Me.Label2.TabIndex = 28
+        Me.Label2.Text = "Informacion de la Actividad"
         '
-        'dgvVoluntarios
+        'Button5
         '
-        Me.dgvVoluntarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvVoluntarios.Location = New System.Drawing.Point(12, 224)
-        Me.dgvVoluntarios.Name = "dgvVoluntarios"
-        Me.dgvVoluntarios.RowHeadersWidth = 51
-        Me.dgvVoluntarios.RowTemplate.Height = 24
-        Me.dgvVoluntarios.Size = New System.Drawing.Size(361, 123)
-        Me.dgvVoluntarios.TabIndex = 21
+        Me.Button5.BackColor = System.Drawing.Color.Red
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.ForeColor = System.Drawing.Color.White
+        Me.Button5.Location = New System.Drawing.Point(12, 346)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(182, 53)
+        Me.Button5.TabIndex = 27
+        Me.Button5.Text = "Eliminar Voluntario"
+        Me.Button5.UseVisualStyleBackColor = False
         '
-        'dgvODS
+        'Button4
         '
-        Me.dgvODS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvODS.Location = New System.Drawing.Point(410, 224)
-        Me.dgvODS.Name = "dgvODS"
-        Me.dgvODS.RowHeadersWidth = 51
-        Me.dgvODS.RowTemplate.Height = 24
-        Me.dgvODS.Size = New System.Drawing.Size(366, 123)
-        Me.dgvODS.TabIndex = 24
+        Me.Button4.BackColor = System.Drawing.Color.Navy
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.ForeColor = System.Drawing.Color.White
+        Me.Button4.Location = New System.Drawing.Point(200, 346)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(173, 53)
+        Me.Button4.TabIndex = 26
+        Me.Button4.Text = "Añadir Voluntario"
+        Me.Button4.UseVisualStyleBackColor = False
         '
-        'Button1
+        'btnEliminarActividad
         '
-        Me.Button1.BackColor = System.Drawing.Color.Red
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(410, 353)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(184, 53)
-        Me.Button1.TabIndex = 23
-        Me.Button1.Text = "Eliminar ODS"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnEliminarActividad.BackColor = System.Drawing.Color.Red
+        Me.btnEliminarActividad.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEliminarActividad.ForeColor = System.Drawing.Color.White
+        Me.btnEliminarActividad.Location = New System.Drawing.Point(626, 434)
+        Me.btnEliminarActividad.Name = "btnEliminarActividad"
+        Me.btnEliminarActividad.Size = New System.Drawing.Size(150, 56)
+        Me.btnEliminarActividad.TabIndex = 25
+        Me.btnEliminarActividad.Text = "Eliminar Actividad"
+        Me.btnEliminarActividad.UseVisualStyleBackColor = False
         '
-        'Button3
+        'btnVolver
         '
-        Me.Button3.BackColor = System.Drawing.Color.Navy
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.White
-        Me.Button3.Location = New System.Drawing.Point(600, 353)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(177, 53)
-        Me.Button3.TabIndex = 22
-        Me.Button3.Text = "Añadir ODS"
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.btnVolver.BackColor = System.Drawing.Color.Navy
+        Me.btnVolver.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVolver.ForeColor = System.Drawing.Color.White
+        Me.btnVolver.Location = New System.Drawing.Point(12, 434)
+        Me.btnVolver.Name = "btnVolver"
+        Me.btnVolver.Size = New System.Drawing.Size(182, 56)
+        Me.btnVolver.TabIndex = 35
+        Me.btnVolver.Text = "Volver"
+        Me.btnVolver.UseVisualStyleBackColor = False
         '
         'FormGestionarActividad
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(797, 509)
+        Me.ClientSize = New System.Drawing.Size(800, 501)
+        Me.Controls.Add(Me.btnVolver)
         Me.Controls.Add(Me.dgvODS)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button3)
@@ -328,27 +342,24 @@ Partial Class FormGestionarActividad
         Me.Controls.Add(Me.btnEliminarActividad)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FormGestionarActividad"
-        Me.Text = "Gestion Actividad"
+        Me.Text = "FormGestionarActividad"
+        CType(Me.dgvODS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvVoluntarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gpxActividad.ResumeLayout(False)
         Me.gpxActividad.PerformLayout()
-        CType(Me.dgvVoluntarios, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvODS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btnEliminarActividad As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Label2 As Label
+
+    Friend WithEvents dgvODS As DataGridView
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents dgvVoluntarios As DataGridView
+    Friend WithEvents btnGuardarCambios As Button
     Friend WithEvents gpxActividad As GroupBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents tbxFechaFin As TextBox
-    Friend WithEvents tbxFechaInicio As TextBox
-    Friend WithEvents tbxParticipantes As TextBox
-    Friend WithEvents tbxDireccion As TextBox
-    Friend WithEvents tbxNombre As TextBox
-    Friend WithEvents tbxCdActividad As TextBox
+    Friend WithEvents cbxOrganizacion As ComboBox
+    Friend WithEvents cbxEstado As ComboBox
     Friend WithEvents Label10 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
@@ -356,11 +367,16 @@ Partial Class FormGestionarActividad
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents btnGuardarCambios As Button
-    Friend WithEvents dgvVoluntarios As DataGridView
-    Friend WithEvents dgvODS As DataGridView
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents cbxEstado As ComboBox
-    Friend WithEvents cbxOrganizacion As ComboBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents tbxFechaFin As TextBox
+    Friend WithEvents tbxFechaInicio As TextBox
+    Friend WithEvents tbxParticipantes As TextBox
+    Friend WithEvents tbxDireccion As TextBox
+    Friend WithEvents tbxNombre As TextBox
+    Friend WithEvents tbxCdActividad As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents btnEliminarActividad As Button
+    Friend WithEvents btnVolver As Button
 End Class

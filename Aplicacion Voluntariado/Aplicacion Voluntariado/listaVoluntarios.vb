@@ -1,4 +1,6 @@
 ﻿Imports Biblioteca_de_clases
+Imports System.Configuration
+
 
 Public Class listaVoluntarios
     Private Sub listaVoluntarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -16,6 +18,8 @@ Public Class listaVoluntarios
                 Dim vol As New Voluntario(fila.Cells("DNI").Value.ToString)
                 GestionActividades.AnadirVoluntario(vol.Dni, actividadSeleccionada.CodActividad)
                 dgvVoluntariosNo.DataSource = GestionActividades.voluntariosNoActividad(actividadSeleccionada)
+                Me.Hide()
+                FormGestionarActividad.Show()
             Next
         End If
     End Sub

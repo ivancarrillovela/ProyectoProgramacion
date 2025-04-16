@@ -1,13 +1,8 @@
-﻿Imports System.Collections.Specialized.BitVector32
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports Biblioteca_de_clases
+﻿Imports Biblioteca_de_clases
 
 Public Class FormGestionarActividad
-
     Dim gestionActividad As New GestionActividades
-    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs)
 
-    End Sub
 
     Private Sub GroupBox1_Enter(sender As Object, e As EventArgs)
 
@@ -18,8 +13,9 @@ Public Class FormGestionarActividad
     End Sub
 
     Private Sub FormGestionarActividad_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         dgvODS.DataSource = GestionActividades.ODSPorActividad(actividadSeleccionada)
-        dgvVoluntarios.DataSource = GestionActividades.VoluntariosPorActividad(actividadSeleccionada)
+        dgvVoluntarios.DataSource = GestionActividades.voluntariosPorActividad(actividadSeleccionada)
         cbxOrganizacion.Text = GestionActividades.OrganizacionPorActividad(actividadSeleccionada)
         tbxCdActividad.Text = actividadSeleccionada.CodActividad
         tbxNombre.Text = actividadSeleccionada.Nombre
@@ -88,8 +84,9 @@ Public Class FormGestionarActividad
                 Exit Sub
             Else
                 GestionActividades.BorrarActividad(tbxCdActividad.Text)
+                FormPrincipal.dvgMenuActividades.DataSource = GestionActividades.ListaActividades
+                FormPrincipal.Show()
                 Me.Close()
-
             End If
 
         End If
@@ -101,7 +98,7 @@ Public Class FormGestionarActividad
             Dim actividadCambiada As New Actividad((Convert.ToInt32(tbxCdActividad.Text)), tbxNombre.Text, cbxEstado.Text, tbxDireccion.Text, Convert.ToInt32(tbxParticipantes.Text), Convert.ToDateTime(tbxFechaInicio.Text), Convert.ToDateTime(tbxFechaFin.Text), GestionActividades.cifOrganizacionPorNombre(cbxOrganizacion.Text))
 
             GestionActividades.actualizarActividad(actividadCambiada)
-
+            FormPrincipal.Show()
             Me.Close()
         End If
 
@@ -114,11 +111,13 @@ Public Class FormGestionarActividad
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim listaVoluntarios As New listaVoluntarios
         listaVoluntarios.Show()
+        Me.Hide()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim listaOds As New listaOds
         listaOds.Show()
+        Me.Hide()
     End Sub
 
 
@@ -127,7 +126,7 @@ Public Class FormGestionarActividad
     End Sub
 
     Public Sub actualizarVoluntarios()
-        dgvODS.DataSource = GestionActividades.VoluntariosPorActividad(actividadSeleccionada)
+        dgvODS.DataSource = GestionActividades.voluntariosPorActividad(actividadSeleccionada)
 
     End Sub
 
@@ -205,14 +204,29 @@ Public Class FormGestionarActividad
                 GestionActividades.QuitarVoluntario(Vol.Cells("DNI").Value.ToString, actividadSeleccionada.CodActividad)
             Next
         End If
-        dgvVoluntarios.DataSource = GestionActividades.VoluntariosPorActividad(actividadSeleccionada)
+        dgvVoluntarios.DataSource = GestionActividades.voluntariosPorActividad(actividadSeleccionada)
     End Sub
 
     Private Sub tbxDireccion_TextChanged(sender As Object, e As EventArgs) Handles tbxDireccion.TextChanged
 
     End Sub
 
-    Private Sub cbxOrganizacion_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxOrganizacion.SelectedIndexChanged
 
+
+    Private Sub dgvODS_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvODS.CellContentClick
+
+    End Sub
+
+    Private Sub gpxActividad_Enter(sender As Object, e As EventArgs) Handles gpxActividad.Enter
+
+    End Sub
+
+    Public Sub CargarVoluntarios()
+        dgvVoluntarios.DataSource = GestionActividades.ODSPorActividad(actividadSeleccionada)
+    End Sub
+
+    Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+        FormPrincipal.Show()
+        Me.Hide()
     End Sub
 End Class

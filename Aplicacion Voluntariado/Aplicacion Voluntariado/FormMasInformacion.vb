@@ -1,4 +1,5 @@
 ﻿Imports Biblioteca_de_clases
+Imports System.Configuration
 
 Public Class FormMasInformacion
     Private Sub FormMasInformacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -12,5 +13,10 @@ Public Class FormMasInformacion
 
     Private Sub btnMasInformacion_Click(sender As Object, e As EventArgs) Handles btnMasInformacion.Click
         dvgMasInformacion.DataSource = GestionActividades.ActividadesPorCiclo(cboNombeCicloMI.Text)
+    End Sub
+
+    Private Sub btnVolverNA_Click(sender As Object, e As EventArgs) Handles btnVolverNA.Click
+        FormPrincipal.Show()
+        Me.Hide()
     End Sub
 End Class

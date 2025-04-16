@@ -1,4 +1,6 @@
 ﻿Imports Biblioteca_de_clases
+Imports System.Configuration
+
 
 Public Class listaOds
     Private Sub listaODS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -16,7 +18,9 @@ Public Class listaOds
                     Convert.ToInt32(fila.Cells("NUMODS").Value))
                 GestionActividades.AnadirOds(ods.NumOds, actividadSeleccionada.CodActividad)
                 dvgODSNo.DataSource = GestionActividades.ODSNoActividad(actividadSeleccionada)
-                FormGestionarActividad.dgvODS.DataSource = GestionActividades.ODSPorActividad(actividadSeleccionada)
+
+                FormGestionarActividad.Hide()
+
             Next
         End If
     End Sub

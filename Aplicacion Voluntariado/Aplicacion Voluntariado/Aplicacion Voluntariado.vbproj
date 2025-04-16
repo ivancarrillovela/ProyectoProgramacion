@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -77,12 +78,6 @@
       <DependentUpon>FormGestionarActividad.vb</DependentUpon>
     </Compile>
     <Compile Include="FormGestionarActividad.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormGestionarActividadd.Designer.vb">
-      <DependentUpon>FormGestionarActividadd.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FormGestionarActividadd.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMasInformacion.Designer.vb">
@@ -137,9 +132,6 @@
     <EmbeddedResource Include="FormGestionarActividad.resx">
       <DependentUpon>FormGestionarActividad.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormGestionarActividadd.resx">
-      <DependentUpon>FormGestionarActividadd.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormMasInformacion.resx">
       <DependentUpon>FormMasInformacion.vb</DependentUpon>
     </EmbeddedResource>
@@ -178,10 +170,6 @@
     <ProjectReference Include="..\Biblioteca de clases\Biblioteca de clases.vbproj">
       <Project>{c962d604-2e09-47cb-836f-91140b96dcee}</Project>
       <Name>Biblioteca de clases</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MisClases\MisClases.vbproj">
-      <Project>{55eae1e8-f31b-47cc-b896-9b681144e45d}</Project>
-      <Name>MisClases</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
