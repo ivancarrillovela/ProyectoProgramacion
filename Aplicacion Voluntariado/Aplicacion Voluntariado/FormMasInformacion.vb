@@ -41,4 +41,16 @@ Public Class FormMasInformacion
         FormPrincipal.Show()
         Me.Hide()
     End Sub
+
+    Private Sub btnLimpiarControlesMi_Click(sender As Object, e As EventArgs) Handles btnLimpiarControlesMi.Click
+        cboNombeCicloMI.Text = ""
+        cboCursoMI.Text = ""
+        cboOdsMI.Text = ""
+        dvgMasInformacion.DataSource = gestion.ListaActividades
+
+    End Sub
+
+    Private Sub cboNombeCicloMI_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboNombeCicloMI.SelectedIndexChanged
+
+    End Sub
 End Class

@@ -33,18 +33,19 @@ Partial Class FormMasInformacion
         Me.btnVolverMI = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cboCursoMI = New System.Windows.Forms.ComboBox()
+        Me.btnLimpiarControlesMi = New System.Windows.Forms.Button()
         CType(Me.dvgMasInformacion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dvgMasInformacion
         '
         Me.dvgMasInformacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dvgMasInformacion.Location = New System.Drawing.Point(44, 207)
+        Me.dvgMasInformacion.Location = New System.Drawing.Point(39, 166)
         Me.dvgMasInformacion.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dvgMasInformacion.Name = "dvgMasInformacion"
         Me.dvgMasInformacion.RowHeadersWidth = 62
         Me.dvgMasInformacion.RowTemplate.Height = 28
-        Me.dvgMasInformacion.Size = New System.Drawing.Size(1297, 481)
+        Me.dvgMasInformacion.Size = New System.Drawing.Size(1153, 385)
         Me.dvgMasInformacion.TabIndex = 7
         '
         'lblActividades
@@ -53,27 +54,27 @@ Partial Class FormMasInformacion
         Me.lblActividades.BackColor = System.Drawing.Color.Transparent
         Me.lblActividades.Font = New System.Drawing.Font("Arial Black", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblActividades.ForeColor = System.Drawing.Color.Navy
-        Me.lblActividades.Location = New System.Drawing.Point(344, 43)
+        Me.lblActividades.Location = New System.Drawing.Point(306, 34)
         Me.lblActividades.Name = "lblActividades"
-        Me.lblActividades.Size = New System.Drawing.Size(702, 42)
+        Me.lblActividades.Size = New System.Drawing.Size(584, 36)
         Me.lblActividades.TabIndex = 8
         Me.lblActividades.Text = "MÁS INFORMACIÓN SOBRE ACTIVIDADES"
         '
         'cboNombeCicloMI
         '
         Me.cboNombeCicloMI.FormattingEnabled = True
-        Me.cboNombeCicloMI.Location = New System.Drawing.Point(153, 153)
+        Me.cboNombeCicloMI.Location = New System.Drawing.Point(136, 122)
         Me.cboNombeCicloMI.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboNombeCicloMI.Name = "cboNombeCicloMI"
-        Me.cboNombeCicloMI.Size = New System.Drawing.Size(323, 28)
+        Me.cboNombeCicloMI.Size = New System.Drawing.Size(288, 24)
         Me.cboNombeCicloMI.TabIndex = 9
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(40, 156)
+        Me.Label1.Location = New System.Drawing.Point(36, 125)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(107, 20)
+        Me.Label1.Size = New System.Drawing.Size(92, 16)
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Nombre Ciclo:"
         '
@@ -83,10 +84,9 @@ Partial Class FormMasInformacion
         Me.btnFiltrarActividadesMI.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.btnFiltrarActividadesMI.Font = New System.Drawing.Font("Myanmar Text", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFiltrarActividadesMI.ForeColor = System.Drawing.Color.White
-        Me.btnFiltrarActividadesMI.Location = New System.Drawing.Point(1121, 127)
-        Me.btnFiltrarActividadesMI.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnFiltrarActividadesMI.Location = New System.Drawing.Point(996, 102)
         Me.btnFiltrarActividadesMI.Name = "btnFiltrarActividadesMI"
-        Me.btnFiltrarActividadesMI.Size = New System.Drawing.Size(220, 54)
+        Me.btnFiltrarActividadesMI.Size = New System.Drawing.Size(196, 43)
         Me.btnFiltrarActividadesMI.TabIndex = 11
         Me.btnFiltrarActividadesMI.Text = "FILTRAR ACTIVIDADES"
         Me.btnFiltrarActividadesMI.UseVisualStyleBackColor = False
@@ -94,18 +94,18 @@ Partial Class FormMasInformacion
         'cboOdsMI
         '
         Me.cboOdsMI.FormattingEnabled = True
-        Me.cboOdsMI.Location = New System.Drawing.Point(868, 153)
+        Me.cboOdsMI.Location = New System.Drawing.Point(772, 122)
         Me.cboOdsMI.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboOdsMI.Name = "cboOdsMI"
-        Me.cboOdsMI.Size = New System.Drawing.Size(220, 28)
+        Me.cboOdsMI.Size = New System.Drawing.Size(196, 24)
         Me.cboOdsMI.TabIndex = 12
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(813, 156)
+        Me.Label2.Location = New System.Drawing.Point(723, 125)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(48, 20)
+        Me.Label2.Size = New System.Drawing.Size(39, 16)
         Me.Label2.TabIndex = 13
         Me.Label2.Text = "ODS:"
         '
@@ -115,10 +115,9 @@ Partial Class FormMasInformacion
         Me.btnVolverMI.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.btnVolverMI.Font = New System.Drawing.Font("Myanmar Text", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVolverMI.ForeColor = System.Drawing.Color.White
-        Me.btnVolverMI.Location = New System.Drawing.Point(44, 707)
-        Me.btnVolverMI.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnVolverMI.Location = New System.Drawing.Point(39, 566)
         Me.btnVolverMI.Name = "btnVolverMI"
-        Me.btnVolverMI.Size = New System.Drawing.Size(222, 51)
+        Me.btnVolverMI.Size = New System.Drawing.Size(197, 41)
         Me.btnVolverMI.TabIndex = 14
         Me.btnVolverMI.Text = "VOLVER"
         Me.btnVolverMI.UseVisualStyleBackColor = False
@@ -126,26 +125,40 @@ Partial Class FormMasInformacion
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(501, 156)
+        Me.Label3.Location = New System.Drawing.Point(445, 125)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(55, 20)
+        Me.Label3.Size = New System.Drawing.Size(45, 16)
         Me.Label3.TabIndex = 15
         Me.Label3.Text = "Curso:"
         '
         'cboCursoMI
         '
         Me.cboCursoMI.FormattingEnabled = True
-        Me.cboCursoMI.Location = New System.Drawing.Point(562, 153)
+        Me.cboCursoMI.Location = New System.Drawing.Point(500, 122)
         Me.cboCursoMI.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboCursoMI.Name = "cboCursoMI"
-        Me.cboCursoMI.Size = New System.Drawing.Size(220, 28)
+        Me.cboCursoMI.Size = New System.Drawing.Size(196, 24)
         Me.cboCursoMI.TabIndex = 16
+        '
+        'btnLimpiarControlesMi
+        '
+        Me.btnLimpiarControlesMi.BackColor = System.Drawing.Color.Navy
+        Me.btnLimpiarControlesMi.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btnLimpiarControlesMi.Font = New System.Drawing.Font("Myanmar Text", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLimpiarControlesMi.ForeColor = System.Drawing.Color.White
+        Me.btnLimpiarControlesMi.Location = New System.Drawing.Point(275, 566)
+        Me.btnLimpiarControlesMi.Name = "btnLimpiarControlesMi"
+        Me.btnLimpiarControlesMi.Size = New System.Drawing.Size(197, 41)
+        Me.btnLimpiarControlesMi.TabIndex = 17
+        Me.btnLimpiarControlesMi.Text = "Limpiar Controles"
+        Me.btnLimpiarControlesMi.UseVisualStyleBackColor = False
         '
         'FormMasInformacion
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1386, 783)
+        Me.ClientSize = New System.Drawing.Size(1232, 626)
+        Me.Controls.Add(Me.btnLimpiarControlesMi)
         Me.Controls.Add(Me.cboCursoMI)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnVolverMI)
@@ -176,4 +189,5 @@ Partial Class FormMasInformacion
     Friend WithEvents btnVolverMI As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents cboCursoMI As ComboBox
+    Friend WithEvents btnLimpiarControlesMi As Button
 End Class
