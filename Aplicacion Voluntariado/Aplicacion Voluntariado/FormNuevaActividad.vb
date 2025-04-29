@@ -4,7 +4,7 @@ Imports StringVerificaciones
 
 Public Class FormNuevaActividad
     Private Sub FormNuevaActividad_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim organizaciones As List(Of Organizacion) = GestionActividades.ListaOrganizaciones
+        Dim organizaciones As List(Of Organizacion) = gestion.ListaOrganizaciones
         cboOrganizacionNA.Items.AddRange(organizaciones.ToArray)
         cboOrganizacionNA.Sorted = True
         txtEstadoNA.Text = "En Curso"
@@ -40,9 +40,9 @@ Public Class FormNuevaActividad
         Dim cifOrganizacionSeleccionada As String = TryCast(cboOrganizacionNA.SelectedItem, Organizacion).Cif
         Dim nuevaActividad As New Actividad(0, txtNombreNA.Text, txtEstadoNA.Text, txtDireccionNA.Text, numNPaticipantesNA.Value, dtpFechaInicioNA.Value, dtpFechaFinNA.Value, cifOrganizacionSeleccionada)
 
-        If GestionActividades.AnadirActividad(nuevaActividad) Then
+        If gestion.AnadirActividad(nuevaActividad) Then
             MessageBox.Show("Actividad registrada con éxito.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            FormPrincipal.dvgMenuActividades.DataSource = GestionActividades.ListaActividades
+            FormPrincipal.dvgMenuActividades.DataSource = gestion.ListaActividades
             FormPrincipal.Show()
             Me.Close()
         Else

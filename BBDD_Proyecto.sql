@@ -1,4 +1,4 @@
-CREATE DATABASE PROYECTOINTER
+ï»¿CREATE DATABASE PROYECTOINTER
 USE PROYECTOINTER
 
 CREATE TABLE ODS (
@@ -106,7 +106,7 @@ ALTER TABLE ORGANIZACIONES ADD CONSTRAINT CK_ORGANIZACIONES_CP CHECK (
     CP LIKE '[0-5][0-9][0-9][0-9][0-9]'
     AND CAST(LEFT(CP, 2) AS INT) BETWEEN 1 AND 52)
 
-ALTER TABLE DISPONIBILIDAD ADD CONSTRAINT CHK_DIA_SEMANA CHECK (DIA_SEMANA IN ('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'));
+ALTER TABLE DISPONIBILIDAD ADD CONSTRAINT CHK_DIA_SEMANA CHECK (DIA_SEMANA IN ('Lunes', 'Martes', 'MiÃ©rcoles', 'Jueves', 'Viernes', 'SÃ¡bado', 'Domingo'));
 go
 CREATE RULE CIFSRULE AS (@CAMPO LIKE '[A-Z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')
 go
@@ -137,8 +137,8 @@ CREATE PROCEDURE EliminarActividad
 AS
 BEGIN
     DELETE FROM ODS_ACTIVIDAD WHERE CODACTIVIDAD = @codActividad
-    DELETE FROM VOLUNTARIOS_ACTIVIDAD WHERE CODACTIVIDAD = @codActividad
-    DELETE FROM ACTIVIDADES_TIPOACTIVI WHERE CODACTIVIDAD = @codActividad
+    DELETE FROM VOLUNTARIOS_ACTIVIDADES WHERE CODACTIVIDAD = @codActividad
+    DELETE FROM ACTIVIDADES_TIPOACTIVIDAD WHERE CODACTIVIDAD = @codActividad
 
     DELETE FROM ACTIVIDADES WHERE CODACTIVIDAD = @codActividad
 END
@@ -150,7 +150,7 @@ CREATE PROCEDURE AgregarVoluntarioActividad
     @codActividad INT
 AS
 BEGIN
-    INSERT INTO VOLUNTARIOS_ACTIVIDAD (DNI_VOLUNTARIO, CODACTIVIDAD)
+    INSERT INTO VOLUNTARIOS_ACTIVIDADES (DNI_VOLUNTARIO, CODACTIVIDAD)
     VALUES (@dniVoluntario, @codActividad)
 END
 go
@@ -196,20 +196,20 @@ INSERT INTO ODS (NUMODS, NOMBRE, DESCRIPCION) VALUES
 INSERT INTO CICLOS (CURSO, NOMBRE) VALUES
 (1, 'Desarrollo de Aplicaciones Web'),
 (2, 'Desarrollo de Aplicaciones Web'),
-(1, 'Administración de Sistemas');
+(1, 'AdministraciÃ³n de Sistemas');
 
 INSERT INTO ORGANIZACIONES (CIF, NOMBRE, DIRECCION, CP, LOCALIDAD, DESCRIPCION, CONTACTO) VALUES
-('A12345678', 'Cruz Roja', 'Calle Mayor 10', '28001', 'Madrid', 'Organización humanitaria', 'cr@cruzroja.org'),
+('A12345678', 'Cruz Roja', 'Calle Mayor 10', '28001', 'Madrid', 'OrganizaciÃ³n humanitaria', 'cr@cruzroja.org'),
 ('B87654321', 'Banco de Alimentos', 'Avda. Solidaridad 5', '46001', 'Valencia', 'Recogida de alimentos', 'info@balimentos.org');
 
 INSERT INTO ACTIVIDADES (NOMBRE, ESTADO, DIRECCION, MAX_PARTICIPANTES, FECHA_INICIO, FECHA_FIN, CIF_EMPRESA) VALUES
 ('Reparto de alimentos', 'En Curso', 'Calle Solidaridad 5', 20, DATEADD(DAY, 1, GETDATE()), DATEADD(DAY, 30, GETDATE()), 'B87654321'),
-('Campaña sanitaria', 'Pendiente', 'Centro Médico Local', 10, DATEADD(DAY, 3, GETDATE()), DATEADD(DAY, 33, GETDATE()), 'A12345678'),
-('Taller de Educación', 'En Curso', 'Escuela Primaria Central', 15, DATEADD(DAY, 5, GETDATE()), DATEADD(DAY, 28, GETDATE()), 'B87654321');
+('CampaÃ±a sanitaria', 'Pendiente', 'Centro MÃ©dico Local', 10, DATEADD(DAY, 3, GETDATE()), DATEADD(DAY, 33, GETDATE()), 'A12345678'),
+('Taller de EducaciÃ³n', 'En Curso', 'Escuela Primaria Central', 15, DATEADD(DAY, 5, GETDATE()), DATEADD(DAY, 28, GETDATE()), 'B87654321');
 
 INSERT INTO VOLUNTARIOS (DNI, NOMBRE, APELLIDO1, APELLIDO2, CORREO, COCHE, FECHA_NACIMIENTO, EXPERIENCIA, CURSO_CICLOS, NOMBRE_CICLOS) VALUES
-('12345678A', 'Laura', 'Gómez', 'Martínez', 'laura.gomez@mail.com', 1, '2000-05-12', 'Buena con personas mayores', 2, 'Desarrollo de Aplicaciones Web'),
-('87654321B', 'Carlos', 'Pérez', 'López', 'carlos.perez@mail.com', 0, '1999-10-20', 'Conductor habitual', 1, 'Administración de Sistemas');
+('12345678A', 'Laura', 'Gomez', 'MartÃ­nez', 'laura.gomez@mail.com', 1, '2000-05-12', 'Buena con personas mayores', 2, 'Desarrollo de Aplicaciones Web'),
+('87654321B', 'Carlos', 'PÃ©rez', 'LÃ³pez', 'carlos.perez@mail.com', 0, '1999-10-08', 'Conductor habitual', 1, 'AdministraciÃ³n de Sistemas');
 
 INSERT INTO ODS_ACTIVIDAD (CODACTIVIDAD, NUMODS) VALUES
 (1, 2),
@@ -234,5 +234,4 @@ INSERT INTO TIPOACTIVIDAD_VOLUNTARIOS (DNI_VOLUNTARIO, NOMBRE_ACTIVIDAD) VALUES
 
 INSERT INTO DISPONIBILIDAD (DNI_VOLUNTARIO, DIA_SEMANA, HORARIO) VALUES
 ('12345678A', 'Lunes', '10:00-16:00'),
-('87654321B', 'Miércoles', '16:00-20:00');
-
+('87654321B', 'MiÃ©rcoles', '16:00-20:00');

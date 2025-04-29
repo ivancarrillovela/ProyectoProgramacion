@@ -6,15 +6,16 @@ Imports System.Configuration
 Public Class FormPrincipal
 
     Private Sub FormPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        GestionActividades.EliminarActividadesArchivadas()
-
-        For Each actividad As Actividad In GestionActividades.ListaActividades
-            If actividad.Fecha_fin < Today.Date Then
-                GestionActividades.ModificarEstadoActividad(actividad.CodActividad, "Archivado")
-            End If
-        Next
-        dvgMenuActividades.DataSource = GestionActividades.ListaActividades
+        If Not gestion.CargarFichero Then
+            MessageBox.Show("Fallo en la lectura del fichero.txt")
+            Close()
+        End If
+        For Each actividad As Actividad In gestion.ListaActividades
+                If actividad.Fecha_fin < Today.Date Then
+                    gestion.ModificarEstadoActividad(actividad.CodActividad, "Archivado")
+                End If
+            Next
+            dvgMenuActividades.DataSource = gestion.ListaActividades
     End Sub
 
     Private Sub btnNuevaActividad_Click(sender As Object, e As EventArgs) Handles btnNuevaActividad.Click
@@ -60,8 +61,8 @@ Public Class FormPrincipal
             Dim codActividad As Integer = dvgMenuActividades.SelectedRows(0).Cells("CODACTIVIDAD").Value
             Dim estadoActual As String = dvgMenuActividades.SelectedRows(0).Cells("ESTADO").Value
             If Not estadoActual = "Archivado" Then
-                GestionActividades.ModificarEstadoActividad(codActividad, "Archivado")
-                dvgMenuActividades.DataSource = GestionActividades.ListaActividades
+                gestion.ModificarEstadoActividad(codActividad, "Archivado")
+                dvgMenuActividades.DataSource = gestion.ListaActividades
                 MessageBox.Show("La actividad se ha archivado correctamente", "Archivado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("La actividad seleccionada ya está 'Archivada'", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)

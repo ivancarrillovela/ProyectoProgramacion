@@ -3,8 +3,9 @@ Imports System.Configuration
 
 
 Public Class listaVoluntarios
+
     Private Sub listaVoluntarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dgvVoluntariosNo.DataSource = GestionActividades.voluntariosNoActividad(actividadSeleccionada)
+        dgvVoluntariosNo.DataSource = gestion.VoluntariosNoActividad(actividadSeleccionada)
     End Sub
 
     Private Sub btnAgregarVoluntario_Click(sender As Object, e As EventArgs) Handles btnAnadirVoluntario.Click
@@ -16,11 +17,15 @@ Public Class listaVoluntarios
                 Dim fila As DataGridViewRow = dgvVoluntariosNo.SelectedRows(i)
 
                 Dim vol As New Voluntario(fila.Cells("DNI").Value.ToString)
-                GestionActividades.AnadirVoluntario(vol.Dni, actividadSeleccionada.CodActividad)
-                dgvVoluntariosNo.DataSource = GestionActividades.voluntariosNoActividad(actividadSeleccionada)
-                Me.Hide()
-                FormGestionarActividad.Show()
+                gestion.AnadirVoluntario(vol.Dni, actividadSeleccionada.CodActividad)
+                dgvVoluntariosNo.DataSource = gestion.VoluntariosNoActividad(actividadSeleccionada)
             Next
         End If
+    End Sub
+
+    Private Sub btnVolverAnadirVoluntario_Click(sender As Object, e As EventArgs) Handles btnVolverAnadirVoluntario.Click
+        FormGestionarActividad.dgvVoluntariosGA.DataSource = gestion.VoluntariosPorActividad(actividadSeleccionada)
+        FormGestionarActividad.Show()
+        Close()
     End Sub
 End Class

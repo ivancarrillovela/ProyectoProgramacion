@@ -58,3 +58,13 @@ C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\Biblioteca de cla
 C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\Biblioteca de clases\obj\Debug\Biblioteca de clases.dll
 C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\Biblioteca de clases\obj\Debug\Biblioteca de clases.xml
 C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\Biblioteca de clases\obj\Debug\Biblioteca de clases.pdb
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Biblioteca de clases\bin\Debug\Biblioteca de clases.dll
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Biblioteca de clases\bin\Debug\Biblioteca de clases.pdb
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Biblioteca de clases\bin\Debug\Biblioteca de clases.xml
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Biblioteca de clases\obj\Debug\Biblioteca de clases.vbproj.AssemblyReference.cache
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Biblioteca de clases\obj\Debug\Biblioteca_de_clases.Resources.resources
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Biblioteca de clases\obj\Debug\Biblioteca de clases.vbproj.GenerateResource.cache
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Biblioteca de clases\obj\Debug\Biblioteca de clases.vbproj.CoreCompileInputs.cache
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Biblioteca de clases\obj\Debug\Biblioteca de clases.dll
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Biblioteca de clases\obj\Debug\Biblioteca de clases.xml
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Biblioteca de clases\obj\Debug\Biblioteca de clases.pdb

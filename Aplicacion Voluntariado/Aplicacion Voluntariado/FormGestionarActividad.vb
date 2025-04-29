@@ -1,22 +1,12 @@
 ﻿Imports Biblioteca_de_clases
 
 Public Class FormGestionarActividad
-    Dim gestionActividad As New GestionActividades
-
-
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub dgv_Actividades_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
-
-    End Sub
 
     Private Sub FormGestionarActividad_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        dgvODS.DataSource = GestionActividades.ODSPorActividad(actividadSeleccionada)
-        dgvVoluntarios.DataSource = GestionActividades.voluntariosPorActividad(actividadSeleccionada)
-        cbxOrganizacion.Text = GestionActividades.OrganizacionPorActividad(actividadSeleccionada)
+        dgvOdsGA.DataSource = gestion.OdsPorActividad(actividadSeleccionada)
+        dgvVoluntariosGA.DataSource = gestion.VoluntariosPorActividad(actividadSeleccionada)
+        cbxOrganizacion.Text = gestion.OrganizacionPorActividad(actividadSeleccionada)
         tbxCdActividad.Text = actividadSeleccionada.CodActividad
         tbxNombre.Text = actividadSeleccionada.Nombre
         cbxEstado.Text = actividadSeleccionada.Estado
@@ -36,46 +26,33 @@ Public Class FormGestionarActividad
             cbxEstado.Items.AddRange(estados.ToArray)
         End If
 
-        cbxOrganizacion.Items.AddRange((GestionActividades.organizacionesLista(cbxOrganizacion.Text)).ToArray)
+        cbxOrganizacion.Items.AddRange((gestion.OrganizacionesLista(cbxOrganizacion.Text)).ToArray)
 
     End Sub
 
-    Private Sub ListBox1_SelectedIndexChanged_1(sender As Object, e As EventArgs)
-    End Sub
-
-    Private Sub cboVoluntarios_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
-
-    End Sub
-
-    Private Sub TextBox9_TextChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub dgvVoluntarios_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvVoluntarios.CellContentClick
-        If dgvVoluntarios.SelectedRows.Count > 0 Then
-            For i As Integer = 0 To dgvVoluntarios.SelectedRows.Count
-                Dim voluDatos As DataGridViewRow = dgvVoluntarios.SelectedRows(i)
-                GestionActividades.QuitarVoluntario((Convert.ToInt32(voluDatos.Cells("dni").Value)), actividadSeleccionada.CodActividad)
+    Private Sub dgvVoluntarios_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvVoluntariosGA.CellContentClick
+        If dgvVoluntariosGA.SelectedRows.Count > 0 Then
+            For i As Integer = 0 To dgvVoluntariosGA.SelectedRows.Count
+                Dim voluDatos As DataGridViewRow = dgvVoluntariosGA.SelectedRows(i)
+                gestion.QuitarVoluntario((Convert.ToInt32(voluDatos.Cells("dni").Value)), actividadSeleccionada.CodActividad)
             Next
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If dgvODS.SelectedRows.Count > 0 Then
-            For i As Integer = 0 To dgvODS.SelectedRows.Count - 1
-                Dim ODS As DataGridViewRow = dgvODS.SelectedRows(i)
-                GestionActividades.QuitarOds((Convert.ToInt32(ODS.Cells("NumODS").Value)), actividadSeleccionada.CodActividad)
+    Private Sub btnEliminarOdsGA_Click(sender As Object, e As EventArgs) Handles btnEliminarOdsGA.Click
+        If dgvOdsGA.SelectedRows.Count > 0 Then
+            For i As Integer = 0 To dgvOdsGA.SelectedRows.Count - 1
+                Dim ODS As DataGridViewRow = dgvOdsGA.SelectedRows(i)
+                gestion.QuitarOds(actividadSeleccionada.CodActividad, (Convert.ToInt32(ODS.Cells("NumODS").Value)))
             Next
+        Else
+            MessageBox.Show("No has seleccionado ninguna ODS.")
         End If
-        dgvODS.DataSource = GestionActividades.ODSPorActividad(actividadSeleccionada)
+        dgvOdsGA.DataSource = gestion.OdsPorActividad(actividadSeleccionada)
 
     End Sub
 
-    Private Sub btnEliminarActividad_Click(sender As Object, e As EventArgs) Handles btnEliminarActividad.Click
+    Private Sub btnEliminarActividadGA_Click(sender As Object, e As EventArgs) Handles btnEliminarActividadGA.Click
         If verificacionCampos() = True Then
             Dim respuesta As DialogResult = MessageBox.Show(
             "¿Estás seguro de que deseas eliminar esta actividad y todas sus relaciones?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
@@ -83,8 +60,8 @@ Public Class FormGestionarActividad
             If respuesta = DialogResult.No Then
                 Exit Sub
             Else
-                GestionActividades.BorrarActividad(tbxCdActividad.Text)
-                FormPrincipal.dvgMenuActividades.DataSource = GestionActividades.ListaActividades
+                gestion.BorrarActividad(tbxCdActividad.Text)
+                FormPrincipal.dvgMenuActividades.DataSource = gestion.ListaActividades
                 FormPrincipal.Show()
                 Me.Close()
             End If
@@ -92,29 +69,25 @@ Public Class FormGestionarActividad
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnGuardarCambios.Click
+    Private Sub btnGuardarCambiosGA_Click(sender As Object, e As EventArgs) Handles btnGuardarCambiosGA.Click
         If verificacionCampos() = True Then
             MessageBox.Show("Cambios guardados correctamente.")
-            Dim actividadCambiada As New Actividad((Convert.ToInt32(tbxCdActividad.Text)), tbxNombre.Text, cbxEstado.Text, tbxDireccion.Text, Convert.ToInt32(tbxParticipantes.Text), Convert.ToDateTime(tbxFechaInicio.Text), Convert.ToDateTime(tbxFechaFin.Text), GestionActividades.cifOrganizacionPorNombre(cbxOrganizacion.Text))
+            Dim actividadCambiada As New Actividad((Convert.ToInt32(tbxCdActividad.Text)), tbxNombre.Text, cbxEstado.Text, tbxDireccion.Text, Convert.ToInt32(tbxParticipantes.Text), Convert.ToDateTime(tbxFechaInicio.Text), Convert.ToDateTime(tbxFechaFin.Text), gestion.CifDeOrganizacionPorNombre(cbxOrganizacion.Text))
 
-            GestionActividades.actualizarActividad(actividadCambiada)
+            gestion.ActualizarActividad(actividadCambiada)
+            FormPrincipal.dvgMenuActividades.DataSource = gestion.ListaActividades
             FormPrincipal.Show()
             Me.Close()
         End If
-
-
-
     End Sub
 
-
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub btnAnadirVoluntarioGA_Click(sender As Object, e As EventArgs) Handles btnAnadirVoluntarioGA.Click
         Dim listaVoluntarios As New listaVoluntarios
         listaVoluntarios.Show()
         Me.Hide()
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub btnAnadirOdsGA_Click(sender As Object, e As EventArgs) Handles btnAnadirOdsGA.Click
         Dim listaOds As New listaOds
         listaOds.Show()
         Me.Hide()
@@ -122,11 +95,11 @@ Public Class FormGestionarActividad
 
 
     Public Sub actualizarODS()
-        dgvODS.DataSource = GestionActividades.ODSPorActividad(actividadSeleccionada)
+        dgvOdsGA.DataSource = gestion.OdsPorActividad(actividadSeleccionada)
     End Sub
 
     Public Sub actualizarVoluntarios()
-        dgvODS.DataSource = GestionActividades.voluntariosPorActividad(actividadSeleccionada)
+        dgvOdsGA.DataSource = gestion.VoluntariosPorActividad(actividadSeleccionada)
 
     End Sub
 
@@ -197,14 +170,16 @@ Public Class FormGestionarActividad
     End Function
 
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        If dgvVoluntarios.SelectedRows.Count > 0 Then
-            For i As Integer = 0 To dgvVoluntarios.SelectedRows.Count - 1
-                Dim Vol As DataGridViewRow = dgvVoluntarios.SelectedRows(i)
-                GestionActividades.QuitarVoluntario(Vol.Cells("DNI").Value.ToString, actividadSeleccionada.CodActividad)
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btnEliminarVoluntarioGA.Click
+        If dgvVoluntariosGA.SelectedRows.Count > 0 Then
+            For i As Integer = 0 To dgvVoluntariosGA.SelectedRows.Count - 1
+                Dim Vol As DataGridViewRow = dgvVoluntariosGA.SelectedRows(i)
+                gestion.QuitarVoluntario(Vol.Cells("DNI").Value.ToString, actividadSeleccionada.CodActividad)
             Next
+        Else
+            MessageBox.Show("No has seleccionado ningún voluntario.")
         End If
-        dgvVoluntarios.DataSource = GestionActividades.voluntariosPorActividad(actividadSeleccionada)
+        dgvVoluntariosGA.DataSource = gestion.VoluntariosPorActividad(actividadSeleccionada)
     End Sub
 
     Private Sub tbxDireccion_TextChanged(sender As Object, e As EventArgs) Handles tbxDireccion.TextChanged
@@ -213,7 +188,7 @@ Public Class FormGestionarActividad
 
 
 
-    Private Sub dgvODS_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvODS.CellContentClick
+    Private Sub dgvODS_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOdsGA.CellContentClick
 
     End Sub
 
@@ -222,10 +197,10 @@ Public Class FormGestionarActividad
     End Sub
 
     Public Sub CargarVoluntarios()
-        dgvVoluntarios.DataSource = GestionActividades.ODSPorActividad(actividadSeleccionada)
+        dgvVoluntariosGA.DataSource = gestion.OdsPorActividad(actividadSeleccionada)
     End Sub
 
-    Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+    Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolverGA.Click
         FormPrincipal.Show()
         Me.Hide()
     End Sub

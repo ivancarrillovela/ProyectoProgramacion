@@ -1,55 +1,24 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Configuration
+Imports System.IO
+Imports System.Net.Mime.MediaTypeNames
+
 
 Public Class GestionActividades
-
-
-    Private Shared comando As Object
-    Public Class Conexx
-        Private Shared _cadenaConexion As String
-
-        Public Shared ReadOnly Property cadenaConexion As String
-
-            Get
-                If _cadenaConexion Is Nothing Then
-                    _cadenaConexion = ConfigurationManager.ConnectionStrings("ConexionSQL").ConnectionString
-                End If
-                Return _cadenaConexion
-            End Get
-        End Property
-    End Class
-
-
-
-    ''Gestiones para actividades:
-
-    Public Shared Function ListaActividades() As List(Of Actividad)
-
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
-        conexion.Open()
-
-        Dim consulta As String = "SELECT ACTIVIDADES.* FROM ACTIVIDADES"
-
-        Dim cmdObtener As New SqlCommand(consulta, conexion)
-
-        Dim drActividad As SqlDataReader = cmdObtener.ExecuteReader
-
-        Dim actividades As New List(Of Actividad)
-
-        While drActividad.Read
-            Dim actividad As New Actividad(drActividad("CODACTIVIDAD"), drActividad("NOMBRE"), drActividad("ESTADO"), drActividad("DIRECCION"), drActividad("MAX_PARTICIPANTES"), drActividad("FECHA_INICIO"), drActividad("FECHA_FIN"), drActividad("CIF_EMPRESA"))
-            actividades.Add(actividad)
-        End While
-
-        conexion.Close()
-
-        Return actividades
-
+    Private servidor = ""  ' Aquí pondremos el nombre de nuestro servidor de SqlServer
+    Private cadenaConexion = ""
+    Public Function CargarFichero() As Boolean
+        If Not File.Exists("conexion.txt") Then Return False
+        Dim leerFichero() As String = File.ReadAllLines("conexion.txt")
+        servidor = leerFichero(0)
+        cadenaConexion = $"Data Source = {servidor}; Initial Catalog = PROYECTOINTER; Integrated Security = SSPI; MultipleActiveResultSets=true" ' Cadena de conexión para indicar la base de datos, en este caso Estado, con la que vamos a conectar
+        Return True
     End Function
 
-    Public Shared Function ListaVoluntariosPorActividad() As List(Of Actividad)
+    ''Gestiones para actividades:
+    Public Function ListaActividades() As List(Of Actividad)
+        Dim conexion As New SqlConnection(cadenaConexion)
 
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
         conexion.Open()
 
         Dim consulta As String = "SELECT * FROM ACTIVIDADES"
@@ -70,9 +39,32 @@ Public Class GestionActividades
         Return actividades
 
     End Function
-    Public Shared Function BuscarActividad(codActividad As Integer) As Actividad
 
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
+    Public Function ListaVoluntariosPorActividad() As List(Of Actividad)
+
+        Dim conexion As New SqlConnection(cadenaConexion)
+        conexion.Open()
+
+        Dim consulta As String = "SELECT * FROM ACTIVIDADES"
+
+        Dim cmdObtener As New SqlCommand(consulta, conexion)
+
+        Dim drActividad As SqlDataReader = cmdObtener.ExecuteReader
+
+        Dim actividades As New List(Of Actividad)
+
+        While drActividad.Read
+            Dim actividad As New Actividad(drActividad("CODACTIVIDAD"), drActividad("NOMBRE"), drActividad("ESTADO"), drActividad("DIRECCION"), drActividad("MAX_PARTICIPANTES"), drActividad("FECHA_INICIO"), drActividad("FECHA_FIN"), drActividad("CIF_EMPRESA"))
+            actividades.Add(actividad)
+        End While
+
+        conexion.Close()
+
+        Return actividades
+
+    End Function
+    Public Function BuscarActividad(codActividad As Integer) As Actividad
+        Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
         Dim consulta As String = $"SELECT ACTIVIDADES.* FROM ACTIVIDADES WHERE ACTIVIDADES.CODACTIVIDAD={codActividad}"
@@ -91,7 +83,7 @@ Public Class GestionActividades
         Return actividad
 
     End Function
-    Public Shared Function ModificarEstadoActividad(codActividad As Integer, estadoActividad As String) As String
+    Public Sub ModificarEstadoActividad(codActividad As Integer, estadoActividad As String)
 
         Dim estado As String = ""
 
@@ -104,28 +96,26 @@ Public Class GestionActividades
                 estado = "Archivado"
         End Select
 
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
-        conexion.Open()
+        Using conexion As New SqlConnection(cadenaConexion)
 
-        Dim consulta As String = $"UPDATE ACTIVIDADES SET ACTIVIDADES.ESTADO='{estado}' WHERE ACTIVIDADES.CODACTIVIDAD={codActividad}"
+            Using cmd As New SqlCommand("ActualizarEstadoActividad", conexion)
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.AddWithValue("@codActividad", codActividad)
+                cmd.Parameters.AddWithValue("@nuevoEstado", estado)
 
-        Dim cmdModificar As New SqlCommand(consulta, conexion)
+                conexion.Open()
+                cmd.ExecuteNonQuery()
 
-        Dim drActividad As Integer = cmdModificar.ExecuteNonQuery
 
-        conexion.Close()
+            End Using
 
-        If drActividad = 1 Then
-            Return True
-        End If
+        End Using
 
-        Return False
+    End Sub
 
-    End Function
+    Public Function AnadirActividad(actividad As Actividad) As Boolean
 
-    Public Shared Function AnadirActividad(actividad As Actividad) As Boolean
-
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
+        Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
         Dim consulta As String = $"INSERT INTO ACTIVIDADES (NOMBRE,ESTADO,DIRECCION,MAX_PARTICIPANTES,FECHA_INICIO,FECHA_FIN,CIF_EMPRESA) VALUES ('{actividad.Nombre}','{actividad.Estado}','{actividad.Direccion}',{actividad.Max_participantes},'{actividad.Fecha_incio:yyyy-MM-dd HH:mm:ss}','{actividad.Fecha_fin:yyyy-MM-dd HH:mm}','{actividad.Cif}')"
@@ -142,37 +132,35 @@ Public Class GestionActividades
         Return False
 
     End Function
-    Public Shared Function BorrarActividad(codActividad As Integer) As Boolean
+    Public Sub BorrarActividad(codActividad As Integer)
 
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
-        conexion.Open()
+        Using conexion As New SqlConnection(cadenaConexion)
 
-        Dim consulta As String = $"DELETE FROM ACTIVIDADES WHERE ACTIVIDADES.CODACTIVIDAD={codActividad}"
+            Using cmd As New SqlCommand("EliminarActividad", conexion)
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.AddWithValue("@codActividad", codActividad)
 
-        Dim cmdModificar As New SqlCommand(consulta, conexion)
+                conexion.Open()
+                cmd.ExecuteNonQuery()
 
-        Dim drActividad As Integer = cmdModificar.ExecuteNonQuery
 
-        conexion.Close()
+            End Using
 
-        If drActividad = 1 Then
-            Return True
-        End If
+        End Using
 
-        Return False
-
-    End Function
+    End Sub
 
 
 
 
     ''Gestiones para organizaciones:
-    Public Shared Function ListaOrganizaciones() As List(Of Organizacion)
+    Public Function ListaOrganizaciones() As List(Of Organizacion)
 
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
+        Dim conexion As New SqlConnection(cadenaConexion)
+
         conexion.Open()
 
-        Dim consulta As String = $"SELECT ORGANIZACIONES.* FROM ORGANIZACIONES"
+        Dim consulta As String = $"SELECT * FROM ORGANIZACIONES"
 
         Dim cmdObtener As New SqlCommand(consulta, conexion)
 
@@ -195,9 +183,9 @@ Public Class GestionActividades
 
 
     ''Gestiones para ods:
-    Public Shared Function ListaOds() As List(Of Ods)
+    Public Function ListaOds() As List(Of Ods)
 
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
+        Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
         Dim consulta As String = $"SELECT ODS.* FROM ODS"
@@ -219,14 +207,13 @@ Public Class GestionActividades
 
     End Function
 
-    Public Shared Function AnadirOds(codActividad As String, nombreOds As String) As Boolean
-
-        Using conexion As New SqlConnection(Conexx.cadenaConexion)
+    Public Function AnadirOds(codActividad As String, numOds As Integer) As Boolean
+        Using conexion As New SqlConnection(cadenaConexion)
             conexion.Open()
 
             Dim consulta As String = "INSERT INTO ODS_ACTIVIDAD (codactividad,numods) VALUES (@codActividad,@numOds)"
             Using cmdObtener As New SqlCommand(consulta, conexion)
-                cmdObtener.Parameters.AddWithValue("@numODS", nombreOds)
+                cmdObtener.Parameters.AddWithValue("@numODS", numOds)
                 cmdObtener.Parameters.AddWithValue("@codActividad", codActividad)
                 cmdObtener.ExecuteNonQuery()
             End Using
@@ -234,9 +221,8 @@ Public Class GestionActividades
 
     End Function
 
-    Public Shared Function QuitarOds(codActividad As String, numODS As Integer) As Boolean
-
-        Using conexion As New SqlConnection(Conexx.cadenaConexion)
+    Public Function QuitarOds(codActividad As String, numODS As Integer) As Boolean
+        Using conexion As New SqlConnection(cadenaConexion)
             conexion.Open()
 
             Dim consulta As String = "DELETE FROM ODS_ACTIVIDAD WHERE NUMODS = @numODS"
@@ -254,9 +240,8 @@ Public Class GestionActividades
 
 
     ''Gestiones para voluntarios:
-    Public Shared Function ListaVoluntarios() As List(Of Voluntario)
-
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
+    Public Function ListaVoluntarios() As List(Of Voluntario)
+        Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
         Dim consulta As String = $"SELECT VOLUNTARIOS.* FROM VOLUNTARIOS"
@@ -277,24 +262,27 @@ Public Class GestionActividades
         Return voluntarios
 
     End Function
-    Public Shared Function AnadirVoluntario(dniVoluntario As String, codActividad As Integer) As Boolean
+    Public Sub AnadirVoluntario(dniVoluntario As String, codActividad As Integer)
+        Using conexion As New SqlConnection(cadenaConexion)
 
-        Using conexion As New SqlConnection(Conexx.cadenaConexion)
-            conexion.Open()
+            Using cmd As New SqlCommand("AgregarVoluntarioActividad", conexion)
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.AddWithValue("@dniVoluntario", dniVoluntario)
+                cmd.Parameters.AddWithValue("@codActividad", codActividad)
 
-            Dim consulta As String = "INSERT INTO VOLUNTARIOS_ACTIVIDADES (DNI_VOLUNTARIO,CODACTIVIDAD) VALUES (@dniVoluntario,@codActividad)"
-            Using cmdObtener As New SqlCommand(consulta, conexion)
-                cmdObtener.Parameters.AddWithValue("@dniVoluntario", dniVoluntario)
-                cmdObtener.Parameters.AddWithValue("@codActividad", codActividad)
-                cmdObtener.ExecuteNonQuery()
+
+                conexion.Open()
+                cmd.ExecuteNonQuery()
+
+
             End Using
+
         End Using
 
-    End Function
+    End Sub
 
-    Public Shared Function QuitarVoluntario(dniVoluntario As String, codActividad As Integer) As Boolean
-
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
+    Public Function QuitarVoluntario(dniVoluntario As String, codActividad As Integer) As Boolean
+        Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
         Dim consulta As String = $"DELETE FROM VOLUNTARIOS_ACTIVIDADES WHERE CODACTIVIDAD='{codActividad}' AND DNI_VOLUNTARIO='{dniVoluntario}'"
@@ -313,10 +301,9 @@ Public Class GestionActividades
 
     End Function
 
-    Public Shared Function voluntariosPorActividad(actividad As Actividad) As List(Of Voluntario)
+    Public Function VoluntariosPorActividad(actividad As Actividad) As List(Of Voluntario)
         Dim voluntarios As New List(Of Voluntario)()
-
-        Using conexion As New SqlConnection(Conexx.cadenaConexion)
+        Using conexion As New SqlConnection(cadenaConexion)
             conexion.Open()
 
             Dim consulta As String = "SELECT * FROM VOLUNTARIOS WHERE DNI IN (SELECT DNI_VOLUNTARIO FROM VOLUNTARIOS_ACTIVIDADES WHERE CODACTIVIDAD = @codActividad)"
@@ -348,9 +335,8 @@ Public Class GestionActividades
 
 
     ''Gestiones para voluntarios:
-    Public Shared Function ListaCiclos() As List(Of Ciclo)
-
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
+    Public Function ListaCiclos() As List(Of Ciclo)
+        Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
         Dim consulta As String = $"SELECT CICLOS.* FROM CICLOS"
@@ -374,9 +360,8 @@ Public Class GestionActividades
 
 
     ''Gestiones para filtros:
-    Public Shared Function ActividadesPorCiclo(nombreCiclo As String) As List(Of Actividad)
-
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
+    Public Function ActividadesPorCiclo(nombreCiclo As String) As List(Of Actividad)
+        Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
         Dim consulta As String = $"SELECT ACTIVIDADES.* FROM ACTIVIDADES " &
@@ -403,9 +388,66 @@ Public Class GestionActividades
 
     End Function
 
-    Public Shared Function FiltrarActividades(nombreOds As String) As List(Of Actividad)
+    Public Function ActividadesPorCicloYCurso(nombreCiclo As String, curso As Integer) As List(Of Actividad)
+        Dim conexion As New SqlConnection(cadenaConexion)
+        conexion.Open()
 
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
+        Dim consulta As String = $"SELECT ACTIVIDADES.* FROM ACTIVIDADES " &
+                                 $"INNER JOIN (VOLUNTARIOS_ACTIVIDADES INNER JOIN " &
+                                 $"(VOLUNTARIOS INNER JOIN CICLOS ON VOLUNTARIOS.NOMBRE_CICLOS=CICLOS.NOMBRE) " &
+                                 $"ON VOLUNTARIOS_ACTIVIDADES.DNI_VOLUNTARIO=VOLUNTARIOS.DNI) " &
+                                 $"ON ACTIVIDADES.CODACTIVIDAD=VOLUNTARIOS_ACTIVIDADES.CODACTIVIDAD " &
+                                 $"WHERE CICLOS.NOMBRE='{nombreCiclo}' AND CICLOS.CURSO='{curso}'"
+
+        Dim cmdObtener As New SqlCommand(consulta, conexion)
+
+        Dim drActividad As SqlDataReader = cmdObtener.ExecuteReader
+
+        Dim actividades As New List(Of Actividad)
+
+        While drActividad.Read
+            Dim actividad As New Actividad(drActividad("CODACTIVIDAD"), drActividad("NOMBRE"), drActividad("ESTADO"), drActividad("DIRECCION"), drActividad("MAX_PARTICIPANTES"), drActividad("FECHA_INICIO"), drActividad("FECHA_FIN"), drActividad("CIF_EMPRESA"))
+            actividades.Add(actividad)
+        End While
+
+        conexion.Close()
+
+        Return actividades
+
+    End Function
+
+    Public Function ActividadesPorCicloYOds(nombreCiclo As String, numOds As Integer) As List(Of Actividad)
+        Dim conexion As New SqlConnection(cadenaConexion)
+        conexion.Open()
+
+        Dim consulta As String = $"SELECT DISTINCT Actividades.Nombre AS NombreActividad, Ciclos.Nombre AS NombreCurso,
+                                   ODS.NumODS AS NumeroODS, ODS.Nombre AS NombreODS FROM Actividades
+                                   JOIN VOLUNTARIOS_ACTIVIDAD ON Actividades.CodActividad = VOLUNTARIOS_ACTIVIDAD.CodActividad
+                                   JOIN Voluntarios ON VOLUNTARIOS_ACTIVIDAD.DNI_Voluntario = Voluntarios.DNI
+                                   JOIN Ciclos ON Voluntarios.Curso = Ciclos.Curso
+                                   JOIN ODS_ACTIVIDAD ON Actividades.CodActividad = ODS_ACTIVIDAD.CodActividad
+                                   JOIN ODS ON ODS_ACTIVIDAD.NumODS = ODS.NumODS
+                                   WHERE Ciclos.Nombre = '{nombreCiclo}' AND ODS.NumODS = '{numOds}'"
+
+        Dim cmdObtener As New SqlCommand(consulta, conexion)
+
+        Dim drActividad As SqlDataReader = cmdObtener.ExecuteReader
+
+        Dim actividades As New List(Of Actividad)
+
+        While drActividad.Read
+            Dim actividad As New Actividad(drActividad("CODACTIVIDAD"), drActividad("NOMBRE"), drActividad("ESTADO"), drActividad("DIRECCION"), drActividad("MAX_PARTICIPANTES"), drActividad("FECHA_INICIO"), drActividad("FECHA_FIN"), drActividad("CIF_EMPRESA"))
+            actividades.Add(actividad)
+        End While
+
+        conexion.Close()
+
+        Return actividades
+
+    End Function
+
+    Public Function FiltrarActividades(nombreOds As String) As List(Of Actividad)
+        Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
         Dim consulta As String = $"SELECT ACTIVIDADES.* FROM ACTIVIDADES INNER JOIN (ODS_ACTIVIDAD INNER JOIN ODS ON ODS_ACTIVIDAD.NUMODS=ODS.NUMODS) ON ACTIVIDADES.CODACTIVIDAD=ODS_ACTIVIDAD.CODACTIVIDAD WHERE ODS.NOMBRE='{nombreOds}'"
@@ -427,10 +469,9 @@ Public Class GestionActividades
 
     End Function
 
-    Public Shared Function ODSPorActividad(actividad As Actividad) As List(Of Ods)
+    Public Function OdsPorActividad(actividad As Actividad) As List(Of Ods)
         Dim listaODS As New List(Of Ods)()
-
-        Using conexion As New SqlConnection(Conexx.cadenaConexion)
+        Using conexion As New SqlConnection(cadenaConexion)
             conexion.Open()
 
             Dim consulta As String = "SELECT * FROM ODS WHERE NUMODS IN (SELECT NUMODS FROM ODS_ACTIVIDAD WHERE CODACTIVIDAD = @codActividad)"
@@ -449,10 +490,9 @@ Public Class GestionActividades
         Return listaODS
     End Function
 
-    Public Shared Function OrganizacionPorActividad(actividad As Actividad) As String
+    Public Function OrganizacionPorActividad(actividad As Actividad) As String
         Dim organizacion As String = String.Empty
-
-        Dim conexion As New SqlConnection(Conexx.cadenaConexion)
+        Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
         Dim consulta As String = $"SELECT ORGANIZACIONES.NOMBRE FROM ORGANIZACIONES WHERE CIF = (SELECT CIF_EMPRESA FROM ACTIVIDADES WHERE CODACTIVIDAD = '{actividad.CodActividad}')"
@@ -467,10 +507,9 @@ Public Class GestionActividades
         Return organizacion
     End Function
 
-    Public Shared Function organizacionesLista(nombreOrgActual As String) As List(Of String)
+    Public Function OrganizacionesLista(nombreOrgActual As String) As List(Of String)
         Dim nombres As New List(Of String)
-
-        Using conexion As New SqlConnection(Conexx.cadenaConexion)
+        Using conexion As New SqlConnection(cadenaConexion)
             conexion.Open()
 
             Dim consulta As String = "SELECT NOMBRE FROM ORGANIZACIONES"
@@ -489,10 +528,9 @@ Public Class GestionActividades
         Return nombres
     End Function
 
-    Public Shared Function cifOrganizacionPorNombre(nombreOrg As String) As String
+    Public Function CifDeOrganizacionPorNombre(nombreOrg As String) As String
         Dim cif As String = String.Empty
-
-        Using conexion As New SqlConnection(Conexx.cadenaConexion)
+        Using conexion As New SqlConnection(cadenaConexion)
             conexion.Open()
 
             Dim consulta As String = "SELECT ORGANIZACIONES.CIF FROM ORGANIZACIONES WHERE NOMBRE = @nombreOrg"
@@ -510,9 +548,8 @@ Public Class GestionActividades
         Return cif
     End Function
 
-    Public Shared Sub actualizarActividad(act As Actividad)
-
-        Using conexion As New SqlConnection(Conexx.cadenaConexion)
+    Public Sub ActualizarActividad(act As Actividad)
+        Using conexion As New SqlConnection(cadenaConexion)
             conexion.Open()
 
             Dim consulta As String = "
@@ -540,10 +577,9 @@ Public Class GestionActividades
         End Using
     End Sub
 
-    Public Shared Function ODSNoActividad(Actividad As Actividad) As List(Of Ods)
+    Public Function OdsNoActividad(Actividad As Actividad) As List(Of Ods)
         Dim listaODS As New List(Of Ods)()
-
-        Using conexion As New SqlConnection(Conexx.cadenaConexion)
+        Using conexion As New SqlConnection(cadenaConexion)
             conexion.Open()
 
             Dim consulta As String = "SELECT * FROM ODS WHERE NUMODS NOT IN (SELECT NUMODS FROM ODS_ACTIVIDAD WHERE CODACTIVIDAD = @codActividad)"
@@ -562,10 +598,9 @@ Public Class GestionActividades
         Return listaODS
     End Function
 
-    Public Shared Function voluntariosNoActividad(Actividad As Actividad) As List(Of Voluntario)
+    Public Function VoluntariosNoActividad(Actividad As Actividad) As List(Of Voluntario)
         Dim voluntarios As New List(Of Voluntario)()
-
-        Using conexion As New SqlConnection(Conexx.cadenaConexion)
+        Using conexion As New SqlConnection(cadenaConexion)
             conexion.Open()
 
             Dim consulta As String = "
@@ -589,29 +624,20 @@ Public Class GestionActividades
                 End Using
             End Using
         End Using
-
         Return voluntarios
     End Function
 
-    Public Shared Function EliminarActividadesArchivadas()
-
-        Using conexion As New SqlConnection(Conexx.cadenaConexion)
+    Public Sub EliminarActividadesArchivadas()
+        Using conexion As New SqlConnection(cadenaConexion)
 
             Using cmd As New SqlCommand("EliminarActividadesArchivadas", conexion)
                 cmd.CommandType = CommandType.StoredProcedure
 
-
                 conexion.Open()
-                    cmd.ExecuteNonQuery()
-
+                cmd.ExecuteNonQuery()
 
             End Using
-
         End Using
-
-
-
-    End Function
-
+    End Sub
 
 End Class

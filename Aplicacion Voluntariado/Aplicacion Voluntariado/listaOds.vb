@@ -4,7 +4,7 @@ Imports System.Configuration
 
 Public Class listaOds
     Private Sub listaODS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dvgODSNo.DataSource = GestionActividades.ODSNoActividad(actividadSeleccionada)
+        dvgODSNo.DataSource = gestion.OdsNoActividad(actividadSeleccionada)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAnadirOds.Click
@@ -16,12 +16,14 @@ Public Class listaOds
                 Dim fila As DataGridViewRow = dvgODSNo.SelectedRows(i)
                 Dim ods As New Ods(
                     Convert.ToInt32(fila.Cells("NUMODS").Value))
-                GestionActividades.AnadirOds(ods.NumOds, actividadSeleccionada.CodActividad)
-                dvgODSNo.DataSource = GestionActividades.ODSNoActividad(actividadSeleccionada)
-
-                FormGestionarActividad.Hide()
-
+                gestion.AnadirOds(actividadSeleccionada.CodActividad, ods.NumOds)
+                dvgODSNo.DataSource = gestion.OdsNoActividad(actividadSeleccionada)
             Next
         End If
+    End Sub
+    Private Sub btnVolverOds_Click(sender As Object, e As EventArgs) Handles btnVolverOds.Click
+        FormGestionarActividad.dgvOdsGA.DataSource = gestion.OdsPorActividad(actividadSeleccionada)
+        FormGestionarActividad.Show()
+        Close()
     End Sub
 End Class
