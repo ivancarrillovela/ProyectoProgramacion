@@ -94,10 +94,8 @@ C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\Aplicacion Volunt
 C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\Aplicacion Voluntariado\obj\Debug\Aplicacion Voluntariado.xml
 C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\Aplicacion Voluntariado\obj\Debug\Aplicacion Voluntariado.pdb
 C:\Users\garin\Documents\ProyectoFInal\Aplicacion Voluntariado\Aplicacion Voluntariado\obj\Debug\Aplicacion_Voluntariado.FormGestionarActividad.resources
-C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\bin\Debug\Aplicacion Voluntariado.exe.config
 C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\bin\Debug\Aplicacion Voluntariado.exe
-C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\bin\Debug\Aplicacion Voluntariado.pdb
-C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\bin\Debug\Aplicacion Voluntariado.xml
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\bin\Debug\Aplicacion Voluntariado.exe.config
 C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\bin\Debug\Biblioteca de clases.dll
 C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\bin\Debug\Biblioteca de clases.pdb
 C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\bin\Debug\Biblioteca de clases.xml
@@ -115,3 +113,5 @@ C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion
 C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\obj\Debug\Aplicacion Voluntariado.exe
 C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\obj\Debug\Aplicacion Voluntariado.xml
 C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\obj\Debug\Aplicacion Voluntariado.pdb
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\bin\Debug\Aplicacion Voluntariado.pdb
+C:\Users\ivancarrillo\Desktop\AppProgramacion\Aplicacion Voluntariado\Aplicacion Voluntariado\bin\Debug\Aplicacion Voluntariado.xml

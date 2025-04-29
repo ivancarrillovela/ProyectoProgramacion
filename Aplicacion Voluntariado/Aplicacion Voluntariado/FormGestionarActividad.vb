@@ -6,27 +6,27 @@ Public Class FormGestionarActividad
 
         dgvOdsGA.DataSource = gestion.OdsPorActividad(actividadSeleccionada)
         dgvVoluntariosGA.DataSource = gestion.VoluntariosPorActividad(actividadSeleccionada)
-        cbxOrganizacion.Text = gestion.OrganizacionPorActividad(actividadSeleccionada)
-        tbxCdActividad.Text = actividadSeleccionada.CodActividad
-        tbxNombre.Text = actividadSeleccionada.Nombre
-        cbxEstado.Text = actividadSeleccionada.Estado
-        tbxDireccion.Text = actividadSeleccionada.Direccion
-        tbxParticipantes.Text = actividadSeleccionada.Max_participantes
-        tbxFechaInicio.Text = actividadSeleccionada.Fecha_incio
-        tbxFechaFin.Text = actividadSeleccionada.Fecha_fin
+        cbxOrganizacionGA.Text = gestion.OrganizacionPorActividad(actividadSeleccionada)
+        tbxCdActividadGA.Text = actividadSeleccionada.CodActividad
+        tbxNombreGA.Text = actividadSeleccionada.Nombre
+        cbxEstadoGA.Text = actividadSeleccionada.Estado
+        tbxDireccionGA.Text = actividadSeleccionada.Direccion
+        numParticipantesGA.Text = actividadSeleccionada.Max_participantes
+        dtpFechaInicioGA.Text = actividadSeleccionada.Fecha_incio
+        dtpFechaFinGA.Text = actividadSeleccionada.Fecha_fin
 
-        If cbxEstado.Text = "En Curso" Then
+        If cbxEstadoGA.Text = "En Curso" Then
             Dim estados As New List(Of String) From {"Pendiente", "Archivado"}
-            cbxEstado.Items.AddRange(estados.ToArray)
-        ElseIf cbxEstado.Text = "Archivado" Then
+            cbxEstadoGA.Items.AddRange(estados.ToArray)
+        ElseIf cbxEstadoGA.Text = "Archivado" Then
             Dim estados As New List(Of String) From {"Pendiente", "En Curso"}
-            cbxEstado.Items.AddRange(estados.ToArray)
-        ElseIf cbxEstado.Text = "Pendiente" Then
+            cbxEstadoGA.Items.AddRange(estados.ToArray)
+        ElseIf cbxEstadoGA.Text = "Pendiente" Then
             Dim estados As New List(Of String) From {"En Curso", "Archivado"}
-            cbxEstado.Items.AddRange(estados.ToArray)
+            cbxEstadoGA.Items.AddRange(estados.ToArray)
         End If
 
-        cbxOrganizacion.Items.AddRange((gestion.OrganizacionesLista(cbxOrganizacion.Text)).ToArray)
+        cbxOrganizacionGA.Items.AddRange((gestion.OrganizacionesLista(cbxOrganizacionGA.Text)).ToArray)
 
     End Sub
 
@@ -60,7 +60,7 @@ Public Class FormGestionarActividad
             If respuesta = DialogResult.No Then
                 Exit Sub
             Else
-                gestion.BorrarActividad(tbxCdActividad.Text)
+                gestion.BorrarActividad(tbxCdActividadGA.Text)
                 FormPrincipal.dvgMenuActividades.DataSource = gestion.ListaActividades
                 FormPrincipal.Show()
                 Me.Close()
@@ -72,7 +72,7 @@ Public Class FormGestionarActividad
     Private Sub btnGuardarCambiosGA_Click(sender As Object, e As EventArgs) Handles btnGuardarCambiosGA.Click
         If verificacionCampos() = True Then
             MessageBox.Show("Cambios guardados correctamente.")
-            Dim actividadCambiada As New Actividad((Convert.ToInt32(tbxCdActividad.Text)), tbxNombre.Text, cbxEstado.Text, tbxDireccion.Text, Convert.ToInt32(tbxParticipantes.Text), Convert.ToDateTime(tbxFechaInicio.Text), Convert.ToDateTime(tbxFechaFin.Text), gestion.CifDeOrganizacionPorNombre(cbxOrganizacion.Text))
+            Dim actividadCambiada As New Actividad((Convert.ToInt32(tbxCdActividadGA.Text)), tbxNombreGA.Text, cbxEstadoGA.Text, tbxDireccionGA.Text, Convert.ToInt32(numParticipantesGA.Text), Convert.ToDateTime(dtpFechaInicioGA.Text), Convert.ToDateTime(dtpFechaFinGA.Text), gestion.CifDeOrganizacionPorNombre(cbxOrganizacionGA.Text))
 
             gestion.ActualizarActividad(actividadCambiada)
             FormPrincipal.dvgMenuActividades.DataSource = gestion.ListaActividades
@@ -104,66 +104,66 @@ Public Class FormGestionarActividad
     End Sub
 
     Public Function verificacionCampos() As Boolean
-        Dim nombre As String = tbxNombre.Text.Trim()
+        Dim nombre As String = tbxNombreGA.Text.Trim()
         Dim regex As New System.Text.RegularExpressions.Regex("^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$")
 
         If String.IsNullOrWhiteSpace(nombre) Then
             MessageBox.Show("No puedes dejar el nombre vacío, introduce un valor.")
-            tbxNombre.Focus()
+            tbxNombreGA.Focus()
             Return False
         ElseIf Not regex.IsMatch(nombre) Then
             MessageBox.Show("El nombre solo puede contener letras y espacios.")
-            tbxNombre.Focus()
+            tbxNombreGA.Focus()
             Return False
         End If
 
-        Dim direccion As String = tbxDireccion.Text.Trim()
+        Dim direccion As String = tbxDireccionGA.Text.Trim()
         If String.IsNullOrWhiteSpace(direccion) Then
             MessageBox.Show("No puedes dejar la dirección vacía, introduce un valor.")
-            tbxDireccion.Focus()
+            tbxDireccionGA.Focus()
             Return False
         End If
 
-        If String.IsNullOrWhiteSpace(tbxParticipantes.Text) Then
+        If String.IsNullOrWhiteSpace(numParticipantesGA.Text) Then
             MessageBox.Show("No puedes dejar el campo vacío de máximo de participantes.")
-            tbxParticipantes.Focus()
+            numParticipantesGA.Focus()
             Return False
-        ElseIf Not IsNumeric(tbxParticipantes.Text) Then
+        ElseIf Not IsNumeric(numParticipantesGA.Text) Then
             MessageBox.Show("Solo puedes introducir números en el campo de máximo de participantes.")
-            tbxParticipantes.Focus()
+            numParticipantesGA.Focus()
             Return False
-        ElseIf Convert.ToInt32(tbxParticipantes.Text) < 0 Then
+        ElseIf Convert.ToInt32(numParticipantesGA.Text) < 0 Then
             MessageBox.Show("No puede haber un valor negativo en el campo de máximo de participantes.")
-            tbxParticipantes.Focus()
+            numParticipantesGA.Focus()
             Return False
         End If
 
-        If String.IsNullOrWhiteSpace(tbxFechaInicio.Text) Then
+        If String.IsNullOrWhiteSpace(dtpFechaInicioGA.Text) Then
             MessageBox.Show("No puedes dejar el campo de fecha de inicio vacío.")
-            tbxFechaInicio.Focus()
+            dtpFechaInicioGA.Focus()
             Return False
-        ElseIf Not IsDate(tbxFechaInicio.Text) Then
+        ElseIf Not IsDate(dtpFechaInicioGA.Text) Then
             MessageBox.Show("Has ingresado un tipo de fecha no válido en la fecha de inicio.")
-            tbxFechaInicio.Focus()
+            dtpFechaInicioGA.Focus()
             Return False
         End If
 
-        If String.IsNullOrWhiteSpace(tbxFechaFin.Text) Then
+        If String.IsNullOrWhiteSpace(dtpFechaFinGA.Text) Then
             MessageBox.Show("No puedes dejar el campo de fecha de fin vacío.")
-            tbxFechaFin.Focus()
+            dtpFechaFinGA.Focus()
             Return False
-        ElseIf Not IsDate(tbxFechaFin.Text) Then
+        ElseIf Not IsDate(dtpFechaFinGA.Text) Then
             MessageBox.Show("Has ingresado un tipo de fecha no válido en la fecha de fin.")
-            tbxFechaFin.Focus()
+            dtpFechaFinGA.Focus()
             Return False
         End If
 
-        Dim fechaInicio As Date = Convert.ToDateTime(tbxFechaInicio.Text)
-        Dim fechaFin As Date = Convert.ToDateTime(tbxFechaFin.Text)
+        Dim fechaInicio As Date = Convert.ToDateTime(dtpFechaInicioGA.Text)
+        Dim fechaFin As Date = Convert.ToDateTime(dtpFechaFinGA.Text)
 
         If fechaInicio > fechaFin Then
             MessageBox.Show("La fecha de inicio no puede ser posterior a la fecha de fin.")
-            tbxFechaInicio.Focus()
+            dtpFechaInicioGA.Focus()
             Return False
         End If
         Return True
@@ -182,7 +182,7 @@ Public Class FormGestionarActividad
         dgvVoluntariosGA.DataSource = gestion.VoluntariosPorActividad(actividadSeleccionada)
     End Sub
 
-    Private Sub tbxDireccion_TextChanged(sender As Object, e As EventArgs) Handles tbxDireccion.TextChanged
+    Private Sub tbxDireccion_TextChanged(sender As Object, e As EventArgs) Handles tbxDireccionGA.TextChanged
 
     End Sub
 

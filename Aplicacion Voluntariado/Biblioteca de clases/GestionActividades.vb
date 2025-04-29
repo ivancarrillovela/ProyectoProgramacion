@@ -339,7 +339,7 @@ Public Class GestionActividades
         Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
-        Dim consulta As String = $"SELECT CICLOS.* FROM CICLOS"
+        Dim consulta As String = $"SELECT DISTINCT CICLOS.* FROM CICLOS"
 
         Dim cmdObtener As New SqlCommand(consulta, conexion)
 
@@ -348,7 +348,7 @@ Public Class GestionActividades
         Dim ciclos As New List(Of Ciclo)
 
         While drCiclos.Read
-            Dim ciclo As New Ciclo(drCiclos("NOMBRE"))
+            Dim ciclo As New Ciclo(drCiclos("CURSO"), drCiclos("NOMBRE"))
             ciclos.Add(ciclo)
         End While
 
@@ -420,22 +420,21 @@ Public Class GestionActividades
         Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
-        Dim consulta As String = $"SELECT DISTINCT Actividades.Nombre AS NombreActividad, Ciclos.Nombre AS NombreCurso,
-                                   ODS.NumODS AS NumeroODS, ODS.Nombre AS NombreODS FROM Actividades
-                                   JOIN VOLUNTARIOS_ACTIVIDAD ON Actividades.CodActividad = VOLUNTARIOS_ACTIVIDAD.CodActividad
-                                   JOIN Voluntarios ON VOLUNTARIOS_ACTIVIDAD.DNI_Voluntario = Voluntarios.DNI
-                                   JOIN Ciclos ON Voluntarios.Curso = Ciclos.Curso
-                                   JOIN ODS_ACTIVIDAD ON Actividades.CodActividad = ODS_ACTIVIDAD.CodActividad
-                                   JOIN ODS ON ODS_ACTIVIDAD.NumODS = ODS.NumODS
-                                   WHERE Ciclos.Nombre = '{nombreCiclo}' AND ODS.NumODS = '{numOds}'"
+        Dim consulta As String = $"SELECT ACTIVIDADES.* FROM ACTIVIDADES " &
+                             $"INNER JOIN ODS_ACTIVIDAD ON ACTIVIDADES.CODACTIVIDAD = ODS_ACTIVIDAD.CODACTIVIDAD " &
+                             $"INNER JOIN ODS ON ODS_ACTIVIDAD.NUMODS = ODS.NUMODS " &
+                             $"INNER JOIN VOLUNTARIOS_ACTIVIDADES ON ACTIVIDADES.CODACTIVIDAD = VOLUNTARIOS_ACTIVIDADES.CODACTIVIDAD " &
+                             $"INNER JOIN VOLUNTARIOS ON VOLUNTARIOS_ACTIVIDADES.DNI_VOLUNTARIO = VOLUNTARIOS.DNI " &
+                             $"INNER JOIN CICLOS ON VOLUNTARIOS.NOMBRE_CICLOS = CICLOS.NOMBRE " &
+                             $"WHERE CICLOS.NOMBRE = '{nombreCiclo}' AND ODS.NUMODS = {numOds}"
 
         Dim cmdObtener As New SqlCommand(consulta, conexion)
 
-        Dim drActividad As SqlDataReader = cmdObtener.ExecuteReader
+        Dim drActividad As SqlDataReader = cmdObtener.ExecuteReader()
 
         Dim actividades As New List(Of Actividad)
 
-        While drActividad.Read
+        While drActividad.Read()
             Dim actividad As New Actividad(drActividad("CODACTIVIDAD"), drActividad("NOMBRE"), drActividad("ESTADO"), drActividad("DIRECCION"), drActividad("MAX_PARTICIPANTES"), drActividad("FECHA_INICIO"), drActividad("FECHA_FIN"), drActividad("CIF_EMPRESA"))
             actividades.Add(actividad)
         End While
@@ -443,22 +442,27 @@ Public Class GestionActividades
         conexion.Close()
 
         Return actividades
-
     End Function
 
-    Public Function FiltrarActividades(nombreOds As String) As List(Of Actividad)
+    Public Function ActividadesPorCicloCursoYOds(nombreCiclo As String, curso As Integer, ods As Integer) As List(Of Actividad)
         Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
-        Dim consulta As String = $"SELECT ACTIVIDADES.* FROM ACTIVIDADES INNER JOIN (ODS_ACTIVIDAD INNER JOIN ODS ON ODS_ACTIVIDAD.NUMODS=ODS.NUMODS) ON ACTIVIDADES.CODACTIVIDAD=ODS_ACTIVIDAD.CODACTIVIDAD WHERE ODS.NOMBRE='{nombreOds}'"
+        Dim consulta As String = $"SELECT ACTIVIDADES.* FROM ACTIVIDADES " &
+                             $"INNER JOIN ODS_ACTIVIDAD ON ACTIVIDADES.CODACTIVIDAD = ODS_ACTIVIDAD.CODACTIVIDAD " &
+                             $"INNER JOIN ODS ON ODS_ACTIVIDAD.NUMODS = ODS.NUMODS " &
+                             $"INNER JOIN VOLUNTARIOS_ACTIVIDADES ON ACTIVIDADES.CODACTIVIDAD = VOLUNTARIOS_ACTIVIDADES.CODACTIVIDAD " &
+                             $"INNER JOIN VOLUNTARIOS ON VOLUNTARIOS_ACTIVIDADES.DNI_VOLUNTARIO = VOLUNTARIOS.DNI " &
+                             $"INNER JOIN CICLOS ON VOLUNTARIOS.NOMBRE_CICLOS = CICLOS.NOMBRE " &
+                             $"WHERE CICLOS.NOMBRE = '{nombreCiclo}' AND CICLOS.CURSO = {curso} AND ODS.NUMODS = {ods}"
 
         Dim cmdObtener As New SqlCommand(consulta, conexion)
 
-        Dim drActividad As SqlDataReader = cmdObtener.ExecuteReader
+        Dim drActividad As SqlDataReader = cmdObtener.ExecuteReader()
 
         Dim actividades As New List(Of Actividad)
 
-        While drActividad.Read
+        While drActividad.Read()
             Dim actividad As New Actividad(drActividad("CODACTIVIDAD"), drActividad("NOMBRE"), drActividad("ESTADO"), drActividad("DIRECCION"), drActividad("MAX_PARTICIPANTES"), drActividad("FECHA_INICIO"), drActividad("FECHA_FIN"), drActividad("CIF_EMPRESA"))
             actividades.Add(actividad)
         End While
@@ -466,8 +470,9 @@ Public Class GestionActividades
         conexion.Close()
 
         Return actividades
-
     End Function
+
+
 
     Public Function OdsPorActividad(actividad As Actividad) As List(Of Ods)
         Dim listaODS As New List(Of Ods)()

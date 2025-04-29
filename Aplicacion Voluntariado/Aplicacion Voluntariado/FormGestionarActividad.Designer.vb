@@ -29,8 +29,8 @@ Partial Class FormGestionarActividad
         Me.dgvVoluntariosGA = New System.Windows.Forms.DataGridView()
         Me.btnGuardarCambiosGA = New System.Windows.Forms.Button()
         Me.gpxActividad = New System.Windows.Forms.GroupBox()
-        Me.cbxOrganizacion = New System.Windows.Forms.ComboBox()
-        Me.cbxEstado = New System.Windows.Forms.ComboBox()
+        Me.cbxOrganizacionGA = New System.Windows.Forms.ComboBox()
+        Me.cbxEstadoGA = New System.Windows.Forms.ComboBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -39,20 +39,22 @@ Partial Class FormGestionarActividad
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.tbxFechaFin = New System.Windows.Forms.TextBox()
-        Me.tbxFechaInicio = New System.Windows.Forms.TextBox()
-        Me.tbxParticipantes = New System.Windows.Forms.TextBox()
-        Me.tbxDireccion = New System.Windows.Forms.TextBox()
-        Me.tbxNombre = New System.Windows.Forms.TextBox()
-        Me.tbxCdActividad = New System.Windows.Forms.TextBox()
+        Me.tbxDireccionGA = New System.Windows.Forms.TextBox()
+        Me.tbxNombreGA = New System.Windows.Forms.TextBox()
+        Me.tbxCdActividadGA = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnEliminarVoluntarioGA = New System.Windows.Forms.Button()
         Me.btnAnadirVoluntarioGA = New System.Windows.Forms.Button()
         Me.btnEliminarActividadGA = New System.Windows.Forms.Button()
         Me.btnVolverGA = New System.Windows.Forms.Button()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.dtpFechaInicioGA = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaFinGA = New System.Windows.Forms.DateTimePicker()
+        Me.numParticipantesGA = New System.Windows.Forms.NumericUpDown()
         CType(Me.dgvOdsGA, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvVoluntariosGA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpxActividad.SuspendLayout()
+        CType(Me.numParticipantesGA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dgvOdsGA
@@ -118,8 +120,11 @@ Partial Class FormGestionarActividad
         '
         'gpxActividad
         '
-        Me.gpxActividad.Controls.Add(Me.cbxOrganizacion)
-        Me.gpxActividad.Controls.Add(Me.cbxEstado)
+        Me.gpxActividad.Controls.Add(Me.numParticipantesGA)
+        Me.gpxActividad.Controls.Add(Me.dtpFechaFinGA)
+        Me.gpxActividad.Controls.Add(Me.dtpFechaInicioGA)
+        Me.gpxActividad.Controls.Add(Me.cbxOrganizacionGA)
+        Me.gpxActividad.Controls.Add(Me.cbxEstadoGA)
         Me.gpxActividad.Controls.Add(Me.Label10)
         Me.gpxActividad.Controls.Add(Me.Label8)
         Me.gpxActividad.Controls.Add(Me.Label7)
@@ -128,12 +133,9 @@ Partial Class FormGestionarActividad
         Me.gpxActividad.Controls.Add(Me.Label4)
         Me.gpxActividad.Controls.Add(Me.Label3)
         Me.gpxActividad.Controls.Add(Me.Label1)
-        Me.gpxActividad.Controls.Add(Me.tbxFechaFin)
-        Me.gpxActividad.Controls.Add(Me.tbxFechaInicio)
-        Me.gpxActividad.Controls.Add(Me.tbxParticipantes)
-        Me.gpxActividad.Controls.Add(Me.tbxDireccion)
-        Me.gpxActividad.Controls.Add(Me.tbxNombre)
-        Me.gpxActividad.Controls.Add(Me.tbxCdActividad)
+        Me.gpxActividad.Controls.Add(Me.tbxDireccionGA)
+        Me.gpxActividad.Controls.Add(Me.tbxNombreGA)
+        Me.gpxActividad.Controls.Add(Me.tbxCdActividadGA)
         Me.gpxActividad.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gpxActividad.Location = New System.Drawing.Point(14, 54)
         Me.gpxActividad.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -143,28 +145,28 @@ Partial Class FormGestionarActividad
         Me.gpxActividad.TabIndex = 29
         Me.gpxActividad.TabStop = False
         '
-        'cbxOrganizacion
+        'cbxOrganizacionGA
         '
-        Me.cbxOrganizacion.FormattingEnabled = True
-        Me.cbxOrganizacion.Location = New System.Drawing.Point(429, 120)
-        Me.cbxOrganizacion.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.cbxOrganizacion.Name = "cbxOrganizacion"
-        Me.cbxOrganizacion.Size = New System.Drawing.Size(222, 28)
-        Me.cbxOrganizacion.TabIndex = 27
+        Me.cbxOrganizacionGA.FormattingEnabled = True
+        Me.cbxOrganizacionGA.Location = New System.Drawing.Point(448, 117)
+        Me.cbxOrganizacionGA.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.cbxOrganizacionGA.Name = "cbxOrganizacionGA"
+        Me.cbxOrganizacionGA.Size = New System.Drawing.Size(222, 28)
+        Me.cbxOrganizacionGA.TabIndex = 27
         '
-        'cbxEstado
+        'cbxEstadoGA
         '
-        Me.cbxEstado.FormattingEnabled = True
-        Me.cbxEstado.Location = New System.Drawing.Point(312, 41)
-        Me.cbxEstado.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.cbxEstado.Name = "cbxEstado"
-        Me.cbxEstado.Size = New System.Drawing.Size(116, 28)
-        Me.cbxEstado.TabIndex = 26
+        Me.cbxEstadoGA.FormattingEnabled = True
+        Me.cbxEstadoGA.Location = New System.Drawing.Point(312, 40)
+        Me.cbxEstadoGA.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.cbxEstadoGA.Name = "cbxEstadoGA"
+        Me.cbxEstadoGA.Size = New System.Drawing.Size(116, 28)
+        Me.cbxEstadoGA.TabIndex = 26
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(425, 96)
+        Me.Label10.Location = New System.Drawing.Point(444, 92)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(102, 20)
         Me.Label10.TabIndex = 25
@@ -173,7 +175,7 @@ Partial Class FormGestionarActividad
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(198, 96)
+        Me.Label8.Location = New System.Drawing.Point(226, 96)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(80, 20)
         Me.Label8.TabIndex = 21
@@ -227,60 +229,36 @@ Partial Class FormGestionarActividad
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(7, 18)
+        Me.Label1.Location = New System.Drawing.Point(6, 18)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(102, 20)
         Me.Label1.TabIndex = 20
         Me.Label1.Text = "CodActividad"
         '
-        'tbxFechaFin
+        'tbxDireccionGA
         '
-        Me.tbxFechaFin.Location = New System.Drawing.Point(201, 120)
-        Me.tbxFechaFin.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.tbxFechaFin.Name = "tbxFechaFin"
-        Me.tbxFechaFin.Size = New System.Drawing.Size(190, 25)
-        Me.tbxFechaFin.TabIndex = 20
+        Me.tbxDireccionGA.Location = New System.Drawing.Point(444, 41)
+        Me.tbxDireccionGA.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.tbxDireccionGA.Name = "tbxDireccionGA"
+        Me.tbxDireccionGA.Size = New System.Drawing.Size(256, 25)
+        Me.tbxDireccionGA.TabIndex = 20
         '
-        'tbxFechaInicio
+        'tbxNombreGA
         '
-        Me.tbxFechaInicio.Location = New System.Drawing.Point(7, 120)
-        Me.tbxFechaInicio.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.tbxFechaInicio.Name = "tbxFechaInicio"
-        Me.tbxFechaInicio.Size = New System.Drawing.Size(181, 25)
-        Me.tbxFechaInicio.TabIndex = 20
+        Me.tbxNombreGA.Location = New System.Drawing.Point(129, 42)
+        Me.tbxNombreGA.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.tbxNombreGA.Name = "tbxNombreGA"
+        Me.tbxNombreGA.Size = New System.Drawing.Size(162, 25)
+        Me.tbxNombreGA.TabIndex = 1
         '
-        'tbxParticipantes
+        'tbxCdActividadGA
         '
-        Me.tbxParticipantes.Location = New System.Drawing.Point(721, 41)
-        Me.tbxParticipantes.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.tbxParticipantes.Name = "tbxParticipantes"
-        Me.tbxParticipantes.Size = New System.Drawing.Size(120, 25)
-        Me.tbxParticipantes.TabIndex = 20
-        '
-        'tbxDireccion
-        '
-        Me.tbxDireccion.Location = New System.Drawing.Point(444, 41)
-        Me.tbxDireccion.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.tbxDireccion.Name = "tbxDireccion"
-        Me.tbxDireccion.Size = New System.Drawing.Size(256, 25)
-        Me.tbxDireccion.TabIndex = 20
-        '
-        'tbxNombre
-        '
-        Me.tbxNombre.Location = New System.Drawing.Point(129, 41)
-        Me.tbxNombre.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.tbxNombre.Name = "tbxNombre"
-        Me.tbxNombre.Size = New System.Drawing.Size(162, 25)
-        Me.tbxNombre.TabIndex = 1
-        '
-        'tbxCdActividad
-        '
-        Me.tbxCdActividad.Enabled = False
-        Me.tbxCdActividad.Location = New System.Drawing.Point(7, 41)
-        Me.tbxCdActividad.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.tbxCdActividad.Name = "tbxCdActividad"
-        Me.tbxCdActividad.Size = New System.Drawing.Size(98, 25)
-        Me.tbxCdActividad.TabIndex = 0
+        Me.tbxCdActividadGA.Enabled = False
+        Me.tbxCdActividadGA.Location = New System.Drawing.Point(7, 42)
+        Me.tbxCdActividadGA.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.tbxCdActividadGA.Name = "tbxCdActividadGA"
+        Me.tbxCdActividadGA.Size = New System.Drawing.Size(98, 25)
+        Me.tbxCdActividadGA.TabIndex = 0
         '
         'Label2
         '
@@ -343,11 +321,41 @@ Partial Class FormGestionarActividad
         Me.btnVolverGA.Text = "Volver"
         Me.btnVolverGA.UseVisualStyleBackColor = False
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(797, 241)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(8, 28)
+        Me.ComboBox1.TabIndex = 36
+        '
+        'dtpFechaInicioGA
+        '
+        Me.dtpFechaInicioGA.Location = New System.Drawing.Point(7, 120)
+        Me.dtpFechaInicioGA.Name = "dtpFechaInicioGA"
+        Me.dtpFechaInicioGA.Size = New System.Drawing.Size(200, 25)
+        Me.dtpFechaInicioGA.TabIndex = 28
+        '
+        'dtpFechaFinGA
+        '
+        Me.dtpFechaFinGA.Location = New System.Drawing.Point(227, 120)
+        Me.dtpFechaFinGA.Name = "dtpFechaFinGA"
+        Me.dtpFechaFinGA.Size = New System.Drawing.Size(200, 25)
+        Me.dtpFechaFinGA.TabIndex = 29
+        '
+        'numParticipantesGA
+        '
+        Me.numParticipantesGA.Location = New System.Drawing.Point(722, 42)
+        Me.numParticipantesGA.Name = "numParticipantesGA"
+        Me.numParticipantesGA.Size = New System.Drawing.Size(119, 25)
+        Me.numParticipantesGA.TabIndex = 30
+        '
         'FormGestionarActividad
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(900, 626)
+        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.btnVolverGA)
         Me.Controls.Add(Me.dgvOdsGA)
         Me.Controls.Add(Me.btnEliminarOdsGA)
@@ -367,6 +375,7 @@ Partial Class FormGestionarActividad
         CType(Me.dgvVoluntariosGA, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gpxActividad.ResumeLayout(False)
         Me.gpxActividad.PerformLayout()
+        CType(Me.numParticipantesGA, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -378,8 +387,8 @@ Partial Class FormGestionarActividad
     Friend WithEvents dgvVoluntariosGA As DataGridView
     Friend WithEvents btnGuardarCambiosGA As Button
     Friend WithEvents gpxActividad As GroupBox
-    Friend WithEvents cbxOrganizacion As ComboBox
-    Friend WithEvents cbxEstado As ComboBox
+    Friend WithEvents cbxOrganizacionGA As ComboBox
+    Friend WithEvents cbxEstadoGA As ComboBox
     Friend WithEvents Label10 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
@@ -388,15 +397,16 @@ Partial Class FormGestionarActividad
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents tbxFechaFin As TextBox
-    Friend WithEvents tbxFechaInicio As TextBox
-    Friend WithEvents tbxParticipantes As TextBox
-    Friend WithEvents tbxDireccion As TextBox
-    Friend WithEvents tbxNombre As TextBox
-    Friend WithEvents tbxCdActividad As TextBox
+    Friend WithEvents tbxDireccionGA As TextBox
+    Friend WithEvents tbxNombreGA As TextBox
+    Friend WithEvents tbxCdActividadGA As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents btnEliminarVoluntarioGA As Button
     Friend WithEvents btnAnadirVoluntarioGA As Button
     Friend WithEvents btnEliminarActividadGA As Button
     Friend WithEvents btnVolverGA As Button
+    Friend WithEvents dtpFechaFinGA As DateTimePicker
+    Friend WithEvents dtpFechaInicioGA As DateTimePicker
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents numParticipantesGA As NumericUpDown
 End Class

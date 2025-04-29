@@ -3,40 +3,42 @@ Imports System.Configuration
 
 Public Class FormMasInformacion
     Private Sub FormMasInformacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dvgMasInformacion.DataSource = gestion.ListaActividades
         Dim ciclos As List(Of Ciclo) = gestion.ListaCiclos
+        Dim cursos As List(Of String) = ciclos.Select(Of String)(Function(c) c.curso.ToString).Distinct.ToList
         Dim ods As List(Of Ods) = gestion.ListaOds
         cboNombeCicloMI.Items.AddRange(ciclos.ToArray)
+        cboCursoMI.Items.AddRange(cursos.ToArray)
         cboOdsMI.Items.AddRange(ods.ToArray)
         cboNombeCicloMI.Sorted = True
+        cboCursoMI.Sorted = True
         cboOdsMI.Sorted = True
     End Sub
 
-    Private Sub btnMasInformacion_Click(sender As Object, e As EventArgs) Handles btnMasInformacion.Click
+    Private Sub btnFiltrarActividadesMI_Click(sender As Object, e As EventArgs) Handles btnFiltrarActividadesMI.Click
         If cboNombeCicloMI.Text = "" Then
-            MessageBox.Show("Debes seleccionar un ciclo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            MessageBox.Show("Debes seleccionar un ciclo como mínimo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         Else
             If cboCursoMI.Text = "" And cboOdsMI.Text = "" Then
                 dvgMasInformacion.DataSource = gestion.ActividadesPorCiclo(cboNombeCicloMI.Text)
 
             ElseIf cboCursoMI.Text <> "" And cboOdsMI.Text = "" Then
+
                 dvgMasInformacion.DataSource = gestion.ActividadesPorCicloYCurso(cboNombeCicloMI.Text, cboCursoMI.Text)
 
-                'ElseIf cboCursoMI.Text = "" And cboOdsMI.Text <> "" Then
-                '    dvgMasInformacion.DataSource = gestion.ActividadesPorCicloYOds(cboNombeCicloMI.Text, Convert.ToInt32(cboOdsMI.Text))
+            ElseIf cboCursoMI.Text = "" And cboOdsMI.Text <> "" Then
+                dvgMasInformacion.DataSource = gestion.ActividadesPorCicloYOds(cboNombeCicloMI.Text, CType(cboOdsMI.SelectedItem, Ods).NumOds)
 
-                'ElseIf cboCursoMI.Text <> "" And cboOdsMI.Text <> "" Then
-                '    'dvgMasInformacion.DataSource = gestion.ActividadesPorCicloYCursoYOds(cboNombeCicloMI.Text, cboCursoMI.Text, cboOdsMI.Text)
+            Else
+                dvgMasInformacion.DataSource = gestion.ActividadesPorCicloCursoYOds(cboNombeCicloMI.Text, cboCursoMI.Text, CType(cboOdsMI.SelectedItem, Ods).NumOds)
+
             End If
-
         End If
-        dvgMasInformacion.DataSource = gestion.ActividadesPorCicloYCurso(cboNombeCicloMI.Text, cboCursoMI.Text)
-    End Sub
 
-    Private Sub btnVolverNA_Click(sender As Object, e As EventArgs) Handles btnVolverNA.Click
+    End Sub
+    Private Sub btnVolverMI_Click(sender As Object, e As EventArgs) Handles btnVolverMI.Click
         FormPrincipal.Show()
         Me.Hide()
     End Sub
-
-
 End Class
