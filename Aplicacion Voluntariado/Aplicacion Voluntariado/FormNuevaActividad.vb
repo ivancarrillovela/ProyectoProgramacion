@@ -1,6 +1,5 @@
 ﻿Imports System.Collections.Specialized.BitVector32
 Imports Biblioteca_de_clases
-Imports StringVerificaciones
 
 Public Class FormNuevaActividad
     Private Sub FormNuevaActividad_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -13,7 +12,7 @@ Public Class FormNuevaActividad
     Private Sub btnDarDeAltaNA_Click(sender As Object, e As EventArgs) Handles btnDarDeAltaNA.Click
 
         If String.IsNullOrEmpty(txtNombreNA.Text) OrElse String.IsNullOrEmpty(txtDireccionNA.Text) OrElse String.IsNullOrEmpty(cboOrganizacionNA.Text) Then
-            MessageBox.Show("Ninguno de los campos pueden estar vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Ninguno de los campos pueden estar vacíos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 

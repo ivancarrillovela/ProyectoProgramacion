@@ -5,7 +5,7 @@ Imports System.Net.Mime.MediaTypeNames
 
 
 Public Class GestionActividades
-    Private servidor = ""  ' Aquí pondremos el nombre de nuestro servidor de SqlServer
+    Private servidor = ""
     Private cadenaConexion = ""
     Public Function CargarFichero() As Boolean
         If Not File.Exists("conexion.txt") Then Return False
@@ -13,6 +13,15 @@ Public Class GestionActividades
         servidor = leerFichero(0)
         cadenaConexion = $"Data Source = {servidor}; Initial Catalog = PROYECTOINTER; Integrated Security = SSPI; MultipleActiveResultSets=true" ' Cadena de conexión para indicar la base de datos, en este caso Estado, con la que vamos a conectar
         Return True
+    End Function
+    Public Function ComprobarConexion() As Boolean
+        Dim conexion As New SqlConnection(cadenaConexion)
+        Try
+            conexion.Open()
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
     End Function
 
     ''Gestiones para actividades:
@@ -207,7 +216,7 @@ Public Class GestionActividades
 
     End Function
 
-    Public Function AnadirOds(codActividad As String, numOds As Integer) As Boolean
+    Public Sub AnadirOds(codActividad As String, numOds As Integer)
         Using conexion As New SqlConnection(cadenaConexion)
             conexion.Open()
 
@@ -219,9 +228,9 @@ Public Class GestionActividades
             End Using
         End Using
 
-    End Function
+    End Sub
 
-    Public Function QuitarOds(codActividad As String, numODS As Integer) As Boolean
+    Public Sub QuitarOds(codActividad As String, numODS As Integer)
         Using conexion As New SqlConnection(cadenaConexion)
             conexion.Open()
 
@@ -234,7 +243,7 @@ Public Class GestionActividades
             End Using
         End Using
 
-    End Function
+    End Sub
 
 
 

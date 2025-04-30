@@ -17,7 +17,7 @@ Public Class FormMasInformacion
 
     Private Sub btnFiltrarActividadesMI_Click(sender As Object, e As EventArgs) Handles btnFiltrarActividadesMI.Click
         If cboNombeCicloMI.Text = "" Then
-            MessageBox.Show("Debes seleccionar un ciclo como mínimo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            MessageBox.Show("Debes seleccionar un ciclo como mínimo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         Else
             If cboCursoMI.Text = "" And cboOdsMI.Text = "" Then
@@ -35,7 +35,6 @@ Public Class FormMasInformacion
 
             End If
         End If
-
     End Sub
     Private Sub btnVolverMI_Click(sender As Object, e As EventArgs) Handles btnVolverMI.Click
         FormPrincipal.Show()
@@ -47,10 +46,5 @@ Public Class FormMasInformacion
         cboCursoMI.Text = ""
         cboOdsMI.Text = ""
         dvgMasInformacion.DataSource = gestion.ListaActividades
-
-    End Sub
-
-    Private Sub cboNombeCicloMI_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboNombeCicloMI.SelectedIndexChanged
-
     End Sub
 End Class

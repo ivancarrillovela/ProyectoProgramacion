@@ -69,7 +69,7 @@ Partial Class listaVoluntarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(713, 562)
+        Me.ClientSize = New System.Drawing.Size(713, 559)
         Me.Controls.Add(Me.btnVolverAnadirVoluntario)
         Me.Controls.Add(Me.btnAnadirVoluntario)
         Me.Controls.Add(Me.dgvVoluntariosNo)

@@ -10,7 +10,7 @@ Public Class listaVoluntarios
 
     Private Sub btnAgregarVoluntario_Click(sender As Object, e As EventArgs) Handles btnAnadirVoluntario.Click
         If dgvVoluntariosNo.SelectedRows.Count = 0 Then
-            MessageBox.Show("Para agregar un voluntario primero tienes que seleccionar cualquiera")
+            MessageBox.Show("Para agregar un voluntario primero tienes que seleccionar cualquiera.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         Else
             For i As Integer = 0 To dgvVoluntariosNo.SelectedRows.Count - 1

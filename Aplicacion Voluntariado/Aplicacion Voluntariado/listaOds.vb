@@ -9,7 +9,7 @@ Public Class listaOds
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAnadirOds.Click
         If dvgODSNo.SelectedRows.Count = 0 Then
-            MessageBox.Show("Para agregar un ODS primero tienes que seleccionar la ODS")
+            MessageBox.Show("Para agregar un ODS primero tienes que seleccionar la ODS.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         Else
             For i As Integer = 0 To dvgODSNo.SelectedRows.Count - 1

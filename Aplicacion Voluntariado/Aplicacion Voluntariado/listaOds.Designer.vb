@@ -69,7 +69,7 @@ Partial Class listaOds
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(728, 562)
+        Me.ClientSize = New System.Drawing.Size(672, 562)
         Me.Controls.Add(Me.btnVolverOds)
         Me.Controls.Add(Me.btnAnadirOds)
         Me.Controls.Add(Me.dvgODSNo)

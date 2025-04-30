@@ -46,7 +46,7 @@ Public Class FormGestionarActividad
                 gestion.QuitarOds(actividadSeleccionada.CodActividad, (Convert.ToInt32(ODS.Cells("NumODS").Value)))
             Next
         Else
-            MessageBox.Show("No has seleccionado ninguna ODS.")
+            MessageBox.Show("No has seleccionado ninguna ODS.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
         dgvOdsGA.DataSource = gestion.OdsPorActividad(actividadSeleccionada)
 
@@ -55,7 +55,7 @@ Public Class FormGestionarActividad
     Private Sub btnEliminarActividadGA_Click(sender As Object, e As EventArgs) Handles btnEliminarActividadGA.Click
         If verificacionCampos() = True Then
             Dim respuesta As DialogResult = MessageBox.Show(
-            "¿Estás seguro de que deseas eliminar esta actividad y todas sus relaciones?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            "La actividad se eliminara de la BBDD definitivamente. ¿Estás seguro de que deseas eliminar esta actividad y todas sus relaciones?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
             If respuesta = DialogResult.No Then
                 Exit Sub
@@ -71,7 +71,7 @@ Public Class FormGestionarActividad
 
     Private Sub btnGuardarCambiosGA_Click(sender As Object, e As EventArgs) Handles btnGuardarCambiosGA.Click
         If verificacionCampos() = True Then
-            MessageBox.Show("Cambios guardados correctamente.")
+            MessageBox.Show("Cambios guardados correctamente.", "Guardado corrctamente", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Dim actividadCambiada As New Actividad((Convert.ToInt32(tbxCdActividadGA.Text)), tbxNombreGA.Text, cbxEstadoGA.Text, tbxDireccionGA.Text, Convert.ToInt32(numParticipantesGA.Text), Convert.ToDateTime(dtpFechaInicioGA.Text), Convert.ToDateTime(dtpFechaFinGA.Text), gestion.CifDeOrganizacionPorNombre(cbxOrganizacionGA.Text))
 
             gestion.ActualizarActividad(actividadCambiada)
@@ -108,52 +108,52 @@ Public Class FormGestionarActividad
         Dim regex As New System.Text.RegularExpressions.Regex("^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$")
 
         If String.IsNullOrWhiteSpace(nombre) Then
-            MessageBox.Show("No puedes dejar el nombre vacío, introduce un valor.")
+            MessageBox.Show("No puedes dejar el nombre vacío, introduce un valor.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             tbxNombreGA.Focus()
             Return False
         ElseIf Not regex.IsMatch(nombre) Then
-            MessageBox.Show("El nombre solo puede contener letras y espacios.")
+            MessageBox.Show("El nombre solo puede contener letras y espacios.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             tbxNombreGA.Focus()
             Return False
         End If
 
         Dim direccion As String = tbxDireccionGA.Text.Trim()
         If String.IsNullOrWhiteSpace(direccion) Then
-            MessageBox.Show("No puedes dejar la dirección vacía, introduce un valor.")
+            MessageBox.Show("No puedes dejar la dirección vacía, introduce un valor.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             tbxDireccionGA.Focus()
             Return False
         End If
 
         If String.IsNullOrWhiteSpace(numParticipantesGA.Text) Then
-            MessageBox.Show("No puedes dejar el campo vacío de máximo de participantes.")
+            MessageBox.Show("No puedes dejar el campo vacío de máximo de participantes.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             numParticipantesGA.Focus()
             Return False
         ElseIf Not IsNumeric(numParticipantesGA.Text) Then
-            MessageBox.Show("Solo puedes introducir números en el campo de máximo de participantes.")
+            MessageBox.Show("Solo puedes introducir números en el campo de máximo de participantes.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             numParticipantesGA.Focus()
             Return False
         ElseIf Convert.ToInt32(numParticipantesGA.Text) < 0 Then
-            MessageBox.Show("No puede haber un valor negativo en el campo de máximo de participantes.")
+            MessageBox.Show("No puede haber un valor negativo en el campo de máximo de participantes.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             numParticipantesGA.Focus()
             Return False
         End If
 
         If String.IsNullOrWhiteSpace(dtpFechaInicioGA.Text) Then
-            MessageBox.Show("No puedes dejar el campo de fecha de inicio vacío.")
+            MessageBox.Show("No puedes dejar el campo de fecha de inicio vacío.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             dtpFechaInicioGA.Focus()
             Return False
         ElseIf Not IsDate(dtpFechaInicioGA.Text) Then
-            MessageBox.Show("Has ingresado un tipo de fecha no válido en la fecha de inicio.")
+            MessageBox.Show("Has ingresado un tipo de fecha no válido en la fecha de inicio.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             dtpFechaInicioGA.Focus()
             Return False
         End If
 
         If String.IsNullOrWhiteSpace(dtpFechaFinGA.Text) Then
-            MessageBox.Show("No puedes dejar el campo de fecha de fin vacío.")
+            MessageBox.Show("No puedes dejar el campo de fecha de fin vacío.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             dtpFechaFinGA.Focus()
             Return False
         ElseIf Not IsDate(dtpFechaFinGA.Text) Then
-            MessageBox.Show("Has ingresado un tipo de fecha no válido en la fecha de fin.")
+            MessageBox.Show("Has ingresado un tipo de fecha no válido en la fecha de fin.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             dtpFechaFinGA.Focus()
             Return False
         End If
@@ -162,13 +162,12 @@ Public Class FormGestionarActividad
         Dim fechaFin As Date = Convert.ToDateTime(dtpFechaFinGA.Text)
 
         If fechaInicio > fechaFin Then
-            MessageBox.Show("La fecha de inicio no puede ser posterior a la fecha de fin.")
+            MessageBox.Show("La fecha de inicio no puede ser posterior a la fecha de fin.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             dtpFechaInicioGA.Focus()
             Return False
         End If
         Return True
     End Function
-
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btnEliminarVoluntarioGA.Click
         If dgvVoluntariosGA.SelectedRows.Count > 0 Then
@@ -177,23 +176,9 @@ Public Class FormGestionarActividad
                 gestion.QuitarVoluntario(Vol.Cells("DNI").Value.ToString, actividadSeleccionada.CodActividad)
             Next
         Else
-            MessageBox.Show("No has seleccionado ningún voluntario.")
+            MessageBox.Show("No has seleccionado ningún voluntario.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
         dgvVoluntariosGA.DataSource = gestion.VoluntariosPorActividad(actividadSeleccionada)
-    End Sub
-
-    Private Sub tbxDireccion_TextChanged(sender As Object, e As EventArgs) Handles tbxDireccionGA.TextChanged
-
-    End Sub
-
-
-
-    Private Sub dgvODS_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOdsGA.CellContentClick
-
-    End Sub
-
-    Private Sub gpxActividad_Enter(sender As Object, e As EventArgs) Handles gpxActividad.Enter
-
     End Sub
 
     Public Sub CargarVoluntarios()

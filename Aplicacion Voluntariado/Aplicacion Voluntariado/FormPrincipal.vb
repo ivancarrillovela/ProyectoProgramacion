@@ -7,7 +7,11 @@ Public Class FormPrincipal
 
     Private Sub FormPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Not gestion.CargarFichero Then
-            MessageBox.Show("Fallo en la lectura del fichero.txt")
+            MessageBox.Show("No existe el fichero para la conexión con la BBDD. Asegurate de que el fichero conexion.txt existe en la carpeta Debug.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Close()
+        End If
+        If Not gestion.ComprobarConexion Then
+            MessageBox.Show("No es posible establecer la conexión con la BBDD. Por favor verifica que el nombre está correctamente escrito en 'conexion.txt'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Close()
         End If
         For Each actividad As Actividad In gestion.ListaActividades
@@ -26,10 +30,11 @@ Public Class FormPrincipal
 
     Private Sub btnGestionarActividad_Click(sender As Object, e As EventArgs) Handles btnGestionarActividad.Click
         If dvgMenuActividades.SelectedRows.Count = 0 Then
-            MessageBox.Show("Debes seleccionar una actividad primero")
+            MessageBox.Show("Debes seleccionar una actividad primero.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+
             Exit Sub
         ElseIf dvgMenuActividades.SelectedRows.Count > 1 Then
-            MessageBox.Show("Solo puedes gestionar una actividad al mismo tiempo")
+            MessageBox.Show("Solo puedes gestionar una actividad al mismo tiempo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         Else
             Dim fila As DataGridViewRow = dvgMenuActividades.SelectedRows(0)
@@ -55,7 +60,7 @@ Public Class FormPrincipal
 
     Private Sub btnArchivarActividad_Click(sender As Object, e As EventArgs) Handles btnArchivarActividad.Click
         If dvgMenuActividades.SelectedRows.Count = 0 Then
-            MessageBox.Show("Tienes que seleccionar una actividad", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            MessageBox.Show("Tienes que seleccionar una actividad.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         Else
             Dim codActividad As Integer = dvgMenuActividades.SelectedRows(0).Cells("CODACTIVIDAD").Value
@@ -63,9 +68,9 @@ Public Class FormPrincipal
             If Not estadoActual = "Archivado" Then
                 gestion.ModificarEstadoActividad(codActividad, "Archivado")
                 dvgMenuActividades.DataSource = gestion.ListaActividades
-                MessageBox.Show("La actividad se ha archivado correctamente", "Archivado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("La actividad se ha archivado correctamente.", "Archivado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
-                MessageBox.Show("La actividad seleccionada ya está 'Archivada'", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("La actividad seleccionada ya está archivada.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
         End If
     End Sub
