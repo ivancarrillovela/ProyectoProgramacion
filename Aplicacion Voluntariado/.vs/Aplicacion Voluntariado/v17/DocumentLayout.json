@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{C962D604-2E09-47CB-836F-91140B96DCEE}|Biblioteca de clases\\Biblioteca de clases.vbproj|solutionrelative:biblioteca de clases\\gestionactividades.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B2EBB7BE-F6B8-4C2E-9DBC-22BEBC05A62D}|Aplicacion Voluntariado\\Aplicacion Voluntariado.vbproj|c:\\users\\ivancarrillo\\desktop\\appprogramacion\\aplicacion voluntariado\\aplicacion voluntariado\\formmasinformacion.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "AbsoluteMoniker": "D:0:0:{B2EBB7BE-F6B8-4C2E-9DBC-22BEBC05A62D}|Aplicacion Voluntariado\\Aplicacion Voluntariado.vbproj|C:\\Users\\ivancarrillo\\Desktop\\AppProgramacion\\Aplicacion Voluntariado\\aplicacion voluntariado\\formmasinformacion.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{B2EBB7BE-F6B8-4C2E-9DBC-22BEBC05A62D}|Aplicacion Voluntariado\\Aplicacion Voluntariado.vbproj|solutionrelative:aplicacion voluntariado\\formmasinformacion.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
@@ -88,7 +88,7 @@
               "RelativeDocumentMoniker": "Biblioteca de clases\\GestionActividades.vb",
               "ToolTip": "C:\\Users\\ivancarrillo\\Desktop\\AppProgramacion\\Aplicacion Voluntariado\\Biblioteca de clases\\GestionActividades.vb",
               "RelativeToolTip": "Biblioteca de clases\\GestionActividades.vb",
-              "ViewState": "AgIAAEcCAAAAAAAAAAAIwNcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGUAAAAAAAAAAADwv4UAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2025-04-30T07:42:20.266Z",
               "EditorCaption": ""
@@ -103,8 +103,7 @@
               "RelativeToolTip": "Aplicacion Voluntariado\\FormMasInformacion.vb",
               "ViewState": "AgIAAA0AAAAAAAAAAAAQwAUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-04-30T07:17:12.461Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T07:17:12.461Z"
             },
             {
               "$type": "Document",
@@ -115,8 +114,7 @@
               "ToolTip": "C:\\Users\\ivancarrillo\\Desktop\\AppProgramacion\\Aplicacion Voluntariado\\Aplicacion Voluntariado\\FormMasInformacion.vb [Dise\u00F1o]",
               "RelativeToolTip": "Aplicacion Voluntariado\\FormMasInformacion.vb [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-04-30T07:17:09.26Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-04-30T07:17:09.26Z"
             }
           ]
         }

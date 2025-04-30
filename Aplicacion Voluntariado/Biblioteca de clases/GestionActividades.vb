@@ -127,9 +127,12 @@ Public Class GestionActividades
         Dim conexion As New SqlConnection(cadenaConexion)
         conexion.Open()
 
-        Dim consulta As String = $"INSERT INTO ACTIVIDADES (NOMBRE,ESTADO,DIRECCION,MAX_PARTICIPANTES,FECHA_INICIO,FECHA_FIN,CIF_EMPRESA) VALUES ('{actividad.Nombre}','{actividad.Estado}','{actividad.Direccion}',{actividad.Max_participantes},'{actividad.Fecha_incio:yyyy-MM-dd HH:mm:ss}','{actividad.Fecha_fin:yyyy-MM-dd HH:mm}','{actividad.Cif}')"
+        Dim consulta As String = $"INSERT INTO ACTIVIDADES (NOMBRE,ESTADO,DIRECCION,MAX_PARTICIPANTES,FECHA_INICIO,FECHA_FIN,CIF_EMPRESA) VALUES ('{actividad.Nombre}','{actividad.Estado}','{actividad.Direccion}',{actividad.Max_participantes},@fechaIni,@fechaFin,'{actividad.Cif}')"
 
         Dim cmdObtener As New SqlCommand(consulta, conexion)
+        'todo Analizar porqué se rompe al no seleccinar las fechas
+        cmdObtener.Parameters.AddWithValue("@fechaIni", actividad.Fecha_incio)
+        cmdObtener.Parameters.AddWithValue("@fechaFin", actividad.Fecha_fin)
 
         Dim drActividad As Integer = cmdObtener.ExecuteNonQuery
         conexion.Close()
