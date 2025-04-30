@@ -11,11 +11,11 @@ Public Class FormPrincipal
             Close()
         End If
         For Each actividad As Actividad In gestion.ListaActividades
-                If actividad.Fecha_fin < Today.Date Then
-                    gestion.ModificarEstadoActividad(actividad.CodActividad, "Archivado")
-                End If
-            Next
-            dvgMenuActividades.DataSource = gestion.ListaActividades
+            If actividad.Fecha_fin < Today.Date Then
+                gestion.ModificarEstadoActividad(actividad.CodActividad, "Archivado")
+            End If
+        Next
+        dvgMenuActividades.DataSource = gestion.ListaActividades
     End Sub
 
     Private Sub btnNuevaActividad_Click(sender As Object, e As EventArgs) Handles btnNuevaActividad.Click

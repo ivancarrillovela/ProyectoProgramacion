@@ -146,11 +146,11 @@ Partial Class FormMasInformacion
         Me.btnLimpiarControlesMi.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.btnLimpiarControlesMi.Font = New System.Drawing.Font("Myanmar Text", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLimpiarControlesMi.ForeColor = System.Drawing.Color.White
-        Me.btnLimpiarControlesMi.Location = New System.Drawing.Point(275, 566)
+        Me.btnLimpiarControlesMi.Location = New System.Drawing.Point(996, 566)
         Me.btnLimpiarControlesMi.Name = "btnLimpiarControlesMi"
         Me.btnLimpiarControlesMi.Size = New System.Drawing.Size(197, 41)
         Me.btnLimpiarControlesMi.TabIndex = 17
-        Me.btnLimpiarControlesMi.Text = "Limpiar Controles"
+        Me.btnLimpiarControlesMi.Text = "LIMPIAR CONTROLES"
         Me.btnLimpiarControlesMi.UseVisualStyleBackColor = False
         '
         'FormMasInformacion
